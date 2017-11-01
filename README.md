@@ -1,15 +1,40 @@
 # Valencia_UPV
 Repository for Valencia_UPV team code for the 2017 igem competition
 
-PlantLabCo raises to todays Plant SynBio researchers problems. This multifunctional 
-website contains a repository that unifies all experiments’ results increasing current 
+PlantLabCo raises to todays Plant SynBio researchers problems. This multifunctional
+website contains a repository that unifies all experimentsâ€™ results increasing current
 scientific work. Furthermore, software modeling tool is integrated to ease
-the mathematical models’ generation of genetic circuits. All guided by a 
-developed metadata’s standard accepted and reviewed by professors and researchers, unifying 
-registered information and allowing data mining. 
+the mathematical modelsâ€™ generation of genetic circuits. All guided by a
+developed metadataâ€™s standard accepted and reviewed by professors and researchers, unifying
+registered information and allowing data mining.
 
-The software was developed using MEAN full-stack JavaScript.
+#Demo
+[Demo here](http://plantlabco.org)
 
+
+#Installation Guide
+
+This piece of software has been developed using MEAN full-stack, in order to deploy
+it is necessary to have installed this framework
+
+We recommend going though the following steps from Ubuntu 16.4, for a proper deployment to be guaranteed
+
+$ sudo apt-get install git
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+$ service mongod status
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+$ sudo apt-get install build-essential
+$ sudo npm install -g bower
+$ sudo npm install -g gulp
+$ sudo npm install -g mean-cli
+
+
+Then we enter the folder and execute the following instruction
+
+$ node server
 
 
 -----------------------------------------------------------------------------------------
