@@ -1,0 +1,115 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section.padding-xlg
+    .container
+      #portfolio
+        ul.nav.nav-pills.mix-filter.mb-60
+          li.active
+            a(href='#' ng-click="filtro = 'all'") All
+          li
+            a(href='#' ng-click="filtro = 'aaa'") World 
+          li
+            a(href='#' ng-click="filtro = 'bbb'") Government 
+          li
+            a(href='#' ng-click="filtro = 'ccc'") University 
+          li
+            a(href='#' ng-click="filtro = 'ddd'") High School Students’
+        .mix-grid(ng-show="filtro == 'ccc' || filtro == 'all' || !filtro")
+            .row.mix
+              .col-md-5
+                .item-box
+                  figure
+                    span.item-hover
+                      span.overlay.dark-5
+                      span.inner
+                        // lightbox
+                        a.ico-rounded.lightbox(href='/images/talks/1.jpeg', data-plugin-options='{"type":"image"}')
+                          span.fa.fa-plus.fs-20
+                    img.img-fluid(src='/images/talks/1.jpeg', width='800', height='533', alt='')
+              .col-md-7
+                h2
+                  a(href='#') FINE ARTS (8 JUN)
+                .mt-30
+                  p Fine Arts students were our first target since we consider that a symbiosis between science and arts in order to enrich both fields with the benefits of the other. We organized an exercise in which a graphic design class had to present a graphic design proposal about our project, fusing SynBio and fine arts. Amazing posters were designed and several students focused their attention on this project.
+                  p This experience gave us the opportunity to realize that SynBio-related developments are barely known for undergraduates, so we decided to extend our outreach to other university fields.
+        .mix-grid(ng-show="filtro == 'ccc' || filtro == 'all' || !filtro")
+            .row.mix
+              .col-md-5
+                .item-box
+                  figure
+                    span.item-hover
+                      span.overlay.dark-5
+                      span.inner
+                        // lightbox
+                        a.ico-rounded.lightbox(href='/images/talks/2.jpeg', data-plugin-options='{"type":"image"}')
+                          span.fa.fa-plus.fs-20
+                    img.img-fluid(src='/images/talks/2.jpeg', width='800', height='533', alt='')
+              .col-md-7
+                h2
+                  a(href='#') DESIGN FACTORY GLOBAL NETWORK (5 OCT)
+                .mt-30
+                  p Different UPV students research teams are grouped in Design Factory (Generación Espontánea), an international network of innovation in universities and research organisations in five continents of the world. DF is on a mission to create change in the world of learning and research through passion-based culture and effective problem solving. Our team belong to this group since our establishment, participating in several activities organized to spread science and technologies knowledge to university students.
+                  p As part of the UPV Welcome Fest, a Design Factory Exhibition was organized with the aim of explain all the innovative projects that university teams undertake during the year. We had the opportunity to explain what SynBio and ChatterPlant are about giving amazing information leaflets. Both project and SynBio field caused great expectation among members of whole university community and we were delighted to answer all the doubts that they had and we attended all their suggestions.
+        .mix-grid(ng-show="filtro == 'ddd' || filtro == 'all' || !filtro")
+            .row.mix
+              .col-md-5
+                .item-box
+                  figure
+                    span.item-hover
+                      span.overlay.dark-5
+                      span.inner
+                        // lightbox
+                        a.ico-rounded.lightbox(href='/images/talks/3.jpeg', data-plugin-options='{"type":"image"}')
+                          span.fa.fa-plus.fs-20
+                    img.img-fluid(src='/images/talks/3.jpeg', width='800', height='533', alt='')
+              .col-md-7
+                h2
+                  a(href='#') PRAKTIKUM UPV (15 JUL)
+                .mt-30
+                  p High School students will play an important role in improving and strengthening the future society. As SynBio knowledge needs to be spread across both undergraduates and High School students, we took part in the Praktikum UPV 2017. In this interactive speech we were able to make SynBio innovations known, as well as how SynBio affects society and how iGEM is involved in its progress.
+        .mix-grid(ng-show="filtro == 'bbb' || filtro == 'all' || !filtro")
+            .row.mix
+              .col-md-5
+                .item-box
+                  figure
+                    span.item-hover
+                      span.overlay.dark-5
+                      span.inner
+                        // lightbox
+                        a.ico-rounded.lightbox(href='/images/talks/4.jpeg', data-plugin-options='{"type":"image"}')
+                          span.fa.fa-plus.fs-20
+                    img.img-fluid(src='/images/talks/4.jpeg', width='800', height='533', alt='')
+              .col-md-7
+                h2
+                  a(href='#') GOVERNMENT LEVEL (28 SEP)
+                .mt-30
+                  p Synthetic Biology needs to be spread in many levels and we thought that regional government could promote young talents and diffuse all the opportunities that SynBio offers. After several talks with Deputation of Valencia, we reached the agreement to offer scholarships to contribute to the development of Synthetic Biology in our city. Thus, students will be able to learn and live the experience that involves working closely with SynBio.
+                  p A ChatterPlant and iGEM talk was done by our student members with the purpose of Bearing this in mind, our student members organized a divulgative conference where mayors of our region had the opportunity to interest in our project and its repercussion.
+                  
+        .mix-grid(ng-show="filtro == 'aaa' || filtro == 'all' || !filtro")
+            .row.mix
+              .col-md-5
+                .item-box
+                  figure
+                    span.item-hover
+                      span.overlay.dark-5
+                      span.inner
+                        // lightbox
+                        a.ico-rounded.lightbox(href='/images/talks/5.jpeg', data-plugin-options='{"type":"image"}')
+                          span.fa.fa-plus.fs-20
+                    img.img-fluid(src='/images/talks/5.jpeg', width='800', height='533', alt='')
+              .col-md-7
+                h2
+                  a(href='#') WORLD LEVEL
+                .mt-30
+                  p Nonetheless, after planning all these activities in our community, we wondered how we could spread our message around the world. Most of SynBio information is published in English language and it can be a bottleneck for those people who is not able to speak this language. Thus, we decided to create a YouTube channel “iGEM Conecta” in order to spread SynBio topics in Spanish-speaking countries. We aim to become a reference channel about SynBio in Spanish language and open the gate for spreading SynBio knowledge around the world.
+                  
+                  p If you want to see our efforts in this field, you can watch our videos 
+                    a(target="_blanck" href="https://www.youtube.com/channel/UCP9NSVRczWgJzch9GJhImVQ/videos") here
+                  p Even if we are not true experts, our team has tried to show how synthetic biology works and all the impressive things which can be done with this innovative field. It is an honor for us to be part of the most important community in the world: Science.
+
+
+block footerJS

@@ -1,0 +1,9 @@
+.thumbnail.text-center
+  figure.blog-item-small-image.mb-20
+    .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+      a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{team.insignia_old}}')
+        img.img-fluid(height="100%" ng-src='{{team.insignia_old}}', alt='' )
+        i.icon-hover-plus
+  h2.fs-18.mt-10.mb-0 {{team.name_old}}
+  h3.fs-11.mt-0.mb-10.text-muted @{{team.nameLowerCase}}
+// completed

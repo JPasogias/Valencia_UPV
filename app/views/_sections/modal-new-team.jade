@@ -1,0 +1,24 @@
+#newTeam.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title New team
+      .modal-body
+        fieldset
+          .row
+            .col-md-12
+              label Name *
+              input.form-control.required(ng-model="newTeamObj.name" type='text')
+          .row
+            .col-md-12
+              label Description *
+              textarea.form-control.required(ng-model="newTeamObj.description" rows='4')
+        
+
+      .modal-footer(style="background-color: #dddddd;")
+        button.btn.btn-3d.btn-gris(type='button' data-dismiss='modal')
+          |  CANCEL
+        button.btn.btn-3d.btn-azul(type='button' ng-click="newTeam()")
+          |  CREATE

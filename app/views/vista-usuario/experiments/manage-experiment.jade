@@ -1,0 +1,206 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="experimentController" ng-init="init(#{JSON.stringify(idExperiment)})" ng-cloak)
+    .container
+      .row
+        .col-md-6
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Title
+              input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.title')
+        .col-md-3
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Category
+              select.form-control(ng-model="experiment.category")
+                option(value='TRANSCRIPTION WITH LUCIFERASE') TRANSCRIPTION WITH LUCIFERASE
+                option(value='TRANSCRIPTION WITH FLUORESCENCE') TRANSCRIPTION WITH FLUORESCENCE
+                option(value='TRANSCRIPTION WITH RNA-seq') TRANSCRIPTION WITH RNA-seq
+                option(value='PROTEIN EXTRACTION') PROTEIN EXTRACTION
+                option(value='PROTEIN PURIFICATION') PROTEIN PURIFICATION
+                option(value='TRANSFORMATION EFFICIENCY') TRANSFORMATION EFFICIENCY
+                option(value='GENOTYPING') GENOTYPING
+                option(value='RESTRICTION ANALISIS') RESTRICTION ANALISIS
+                option(value='CRISP TARGET EFFICIENCY') CRISP TARGET EFFICIENCY
+                option(value='OTHER EXPERIMENTS') OTHER EXPERIMENTS
+              i.fancy-arrow
+        .col-md-3
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              form.ng-pristine.ng-valid
+                .mydiv.form-group
+                  label.control-label Status
+                  select.form-control(ng-model="experiment.status")
+                    option(value='SUCCESS') SUCCESS
+                    option(value='FAILURE') FAILURE
+                  i.fancy-arrow
+
+      .row
+        .col-md-3
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Chassis
+              input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.chassis')
+        .col-md-9
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Key Words
+              .row
+                .col-xs-3
+                  input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.keyword1')
+                .col-xs-3
+                  input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.keyword2')
+                .col-xs-3
+                  input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.keyword3')
+                .col-xs-3
+                  input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.keyword4')
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Research team
+              input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.team')
+      hr  
+      .row
+        .col-md-9
+          form.ng-pristine.ng-valid
+            label Abstract
+            textarea#abstractmsg.summernote.form-control(ng-model="postcontent" data-height='300', data-lang='en-US')
+        .col-md-3
+            label
+              strong Abstract Image
+            .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+              a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{experiment.abstractimage}}')
+                img.img-fluid(width="100%" ng-src='{{experiment.abstractimage}}', alt='')
+                i.icon-hover-plus
+            form#data.ng-pristine.ng-valid(ng-show="false")
+              input#image_file.custom-file-upload(type='file', name='image_file[]', data-btn-text='Select a File' nv-file-select="" uploader="uploader")
+              small.text-muted.block Max file size: 10Mb (jpg/png)
+              input#fileinput(type='submit', value='Submit' style='display: none;')
+            button#falseinput.btn.btn-primary(style="width:100%")
+              i.fa.fa-camera.fa-fw
+              |  EDIT
+        
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            label Image url (instead upload an image for copyright reasons)    
+            input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='experiment.abstractimage')
+
+
+
+      hr
+        
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            label Protocol
+            textarea#protocolmsg.summernote.form-control(ng-model="postcontent" data-height='200', data-lang='en-US')
+
+      .row.manurow
+        .col-md-8
+          label 
+            strong Reactives
+          input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='reactives')
+        .col-md-3
+          label 
+            strong Concentration
+          input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='number', ng-model='concentration')
+        .col-md-1
+          label &nbsp;
+          button.btn.btn-primary(style="width:100%", ng-click="addReactive()")
+            i.fa.fa-plus.fa-fw     
+                     
+      .row
+        .col-xs-12(ng-show="experiment.reactives.length > 0")
+          .table-responsive
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  th(style="font-size: 12px") Reactive
+                  th(style="font-size: 12px") Concentration
+                  th(style="font-size: 12px")
+              tbody    
+                tr(ng-repeat="reactive in experiment.reactives")
+                  td(style="font-size: 12px") 
+                    strong {{reactive.name}}
+                  td(style="font-size: 12px") {{reactive.concentration}}
+                  td(style="font-size: 12px; text-align:right")
+                    button.btn.btn-warning(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="editReactive(reactive.name)")
+                      i(class="fa fa-edit")
+                    button.btn.btn-danger(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="deleteReactive(reactive.name)")
+                      i(class="fa fa-times")
+      .row.manurow
+        .col-md-11
+          label 
+            strong Equipment
+          input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='equip')
+        .col-md-1
+          label &nbsp;
+          button.btn.btn-primary(style="width:100%", ng-click="addEquipment()")
+            i.fa.fa-plus.fa-fw
+      .row
+        .col-xs-12(ng-show="experiment.equipment.length > 0")
+          .table-responsive
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  th(style="font-size: 12px") Equipment
+              tbody    
+                tr(ng-repeat="equip in experiment.equipment")
+                  td(style="font-size: 12px") {{equip.name}}
+                  td(style="font-size: 12px; text-align:right")
+                    button.btn.btn-warning(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="editEquipment(equip.name)")
+                      i(class="fa fa-edit")
+                    button.btn.btn-danger(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="deleteEquipment(equip.name)")
+                      i(class="fa fa-times")
+      
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            label Conditions
+            textarea#conditionsmsg.summernote.form-control(ng-model="postcontent" data-height='200', data-lang='en-US')
+      
+      .row
+        .col-md-6
+          label 
+            strong Number of plants used
+          input#plants.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='number', ng-model='experiment.plants')
+        .col-md-6
+          label 
+            strong Number of replications
+          input#replications.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='number', ng-model='experiment.replications')
+              
+      hr
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            label Results
+            textarea#resultsmsg.summernote.form-control(ng-model="postcontent" data-height='200', data-lang='en-US')
+
+      hr
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            label Bibliography
+            textarea#bibliographymsg.summernote.form-control(ng-model="postcontent" data-height='200', data-lang='en-US')
+
+
+
+      .row
+        .col-md-12(ng-show="experiment._id")
+          center.margiv-top20
+            button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click='edit()') EDIT EXPERIMENT
+        .col-md-12(ng-show="!experiment._id")
+          center.margiv-top20
+            button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click='send()') PUBLISH EXPERIMENT
+
+
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/experiments.js")
+  script(type="text/javascript" src="/js/controllers/experiments/manage-experiment.js")

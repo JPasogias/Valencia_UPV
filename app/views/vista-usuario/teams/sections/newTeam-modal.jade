@@ -1,0 +1,181 @@
+
+#newTeam.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog.modal-md
+    .modal-content
+      // Modal Header
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title New team
+      // Modal Body
+      .modal-body
+        .row
+          .col-md-6
+            label Name of the team
+            input.form-control.typeahead.tt-input(
+              type="text" 
+              name="src" 
+              placeholder="Name of the team" 
+              autocomplete="off" 
+              spellcheck="false" 
+              dir="auto" 
+              style="position: relative; vertical-align: top; background-color: transparent;"
+              ng-model="team.name"
+              )
+          .col-md-6
+            br
+            label.switch.switch-round
+              span Is private group?
+              span(style="padding-left:20px")
+              input(id="isPrivate" type="checkbox" ng-model="isPrivate" checked="")
+              span.switch-label(for="isPrivate" data-on="YES" data-off="NO")
+        .row
+          br
+          .col-md-12
+            label Description
+            .fancy-form
+              textarea.form-control.word-count(
+                rows='4',
+                data-maxlength='200',
+                data-info='textarea-words-info',
+                placeholder="Destined members..."
+                ng-model="team.description" 
+                )
+              i.fa.fa-comments
+              span.fancy-hint.size-11.text-muted
+                strong Track:
+                |  200 Words allowed!
+                span.pull-right
+                  span {{team.description.length}}/200
+                  |  Words
+        .row
+          br
+          .col-md-12
+            #panel-misc-portlet-l2.panel.panel-default
+              .panel-heading
+                span.elipsis
+                  strong Select a badge
+                ul.nav.nav-tabs.pull-right
+                  li.active
+                    a(href='#ttab1_nobg', data-toggle='tab')
+                      | PAGE 1 
+                  li
+                    a(href='#ttab2_nobg', data-toggle='tab')
+                      | PAGE 2 
+              .panel-body
+                .tab-content
+                  #ttab1_nobg.tab-pane.active
+                    .et-line-icons
+                      ul.list-unstyled.clearfix
+                        li(ng-class="{'selectedli': team.insignia == 'et-presentation'}" ng-click="imgSelect('et-presentation')")
+                          i.et-presentation
+                        li(ng-class="{'selectedli': team.insignia == 'et-picture'}" ng-click="imgSelect('et-picture')")
+                          i.et-picture
+                        li(ng-class="{'selectedli': team.insignia == 'et-camera'}" ng-click="imgSelect('et-camera')")
+                          i.et-camera
+                        li(ng-class="{'selectedli': team.insignia == 'et-briefcase'}" ng-click="imgSelect('et-briefcase')")
+                          i.et-briefcase
+                        li(ng-class="{'selectedli': team.insignia == 'et-gift'}" ng-click="imgSelect('et-gift')")
+                          i.et-gift
+                        li(ng-class="{'selectedli': team.insignia == 'et-bargraph'}" ng-click="imgSelect('et-bargraph')")
+                          i.et-bargraph
+                        li(ng-class="{'selectedli': team.insignia == 'et-edit'}" ng-click="imgSelect('et-edit')")
+                          i.et-edit
+                        li(ng-class="{'selectedli': team.insignia == 'et-adjustments'}" ng-click="imgSelect('et-adjustments')")
+                          i.et-adjustments
+                        li(ng-class="{'selectedli': team.insignia == 'et-ribbon'}" ng-click="imgSelect('et-ribbon')")
+                          i.et-ribbon
+                        li(ng-class="{'selectedli': team.insignia == 'et-hourglass'}" ng-click="imgSelect('et-hourglass')")
+                          i.et-hourglass
+                        li(ng-class="{'selectedli': team.insignia == 'et-megaphone'}" ng-click="imgSelect('et-megaphone')")
+                          i.et-megaphone
+                        li(ng-class="{'selectedli': team.insignia == 'et-trophy'}" ng-click="imgSelect('et-trophy')")
+                          i.et-trophy
+                        li(ng-class="{'selectedli': team.insignia == 'et-flag'}" ng-click="imgSelect('et-flag')")
+                          i.et-flag
+                        li(ng-class="{'selectedli': team.insignia == 'et-map'}" ng-click="imgSelect('et-map')")
+                          i.et-map
+                        li(ng-class="{'selectedli': team.insignia == 'et-puzzle'}" ng-click="imgSelect('et-puzzle')")
+                          i.et-puzzle
+                        li(ng-class="{'selectedli': team.insignia == 'et-streetsign'}" ng-click="imgSelect('et-streetsign')")
+                          i.et-streetsign
+                        li(ng-class="{'selectedli': team.insignia == 'et-telescope'}" ng-click="imgSelect('et-telescope')")
+                          i.et-telescope
+                        li(ng-class="{'selectedli': team.insignia == 'et-gears'}" ng-click="imgSelect('et-gears')")
+                          i.et-gears
+                        li(ng-class="{'selectedli': team.insignia == 'et-key'}" ng-click="imgSelect('et-key')")
+                          i.et-key
+                        li(ng-class="{'selectedli': team.insignia == 'et-paperclip'}" ng-click="imgSelect('et-paperclip')")
+                          i.et-paperclip
+                        li(ng-class="{'selectedli': team.insignia == 'et-attachment'}" ng-click="imgSelect('et-attachment')")
+                          i.et-attachment
+                        li(ng-class="{'selectedli': team.insignia == 'et-pricetags'}" ng-click="imgSelect('et-pricetags')")
+                          i.et-pricetags
+                        li(ng-class="{'selectedli': team.insignia == 'et-lightbulb'}" ng-click="imgSelect('et-lightbulb')")
+                          i.et-lightbulb
+                        li(ng-class="{'selectedli': team.insignia == 'et-layers'}" ng-click="imgSelect('et-layers')")
+                          i.et-layers
+                        li(ng-class="{'selectedli': team.insignia == 'et-pencil'}" ng-click="imgSelect('et-pencil')")
+                          i.et-pencil
+                        li(ng-class="{'selectedli': team.insignia == 'et-tools'}" ng-click="imgSelect('et-tools')")
+                          i.et-tools
+                        li(ng-class="{'selectedli': team.insignia == 'et-tools-2'}" ng-click="imgSelect('et-tools-2')")
+                          i.et-tools-2
+                        li(ng-class="{'selectedli': team.insignia == 'et-scissors'}" ng-click="imgSelect('et-scissors')")
+                          i.et-scissors
+                        li(ng-class="{'selectedli': team.insignia == 'et-paintbrush'}" ng-click="imgSelect('et-paintbrush')")
+                          i.et-paintbrush
+                        li(ng-class="{'selectedli': team.insignia == 'et-magnifying-glass'}" ng-click="imgSelect('et-magnifying-glass')")
+                          i.et-magnifying-glass
+                    
+                  #ttab2_nobg.tab-pane
+                    .et-line-icons
+                      ul.list-unstyled.clearfix
+                        li(ng-class="{'selectedli': team.insignia == 'et-circle-compass'}" ng-click="imgSelect('et-circle-compass')")
+                          i.et-circle-compass
+                        li(ng-class="{'selectedli': team.insignia == 'et-linegraph'}" ng-click="imgSelect('et-linegraph')")
+                          i.et-linegraph
+                        li(ng-class="{'selectedli': team.insignia == 'et-mic'}" ng-click="imgSelect('et-mic')")
+                          i.et-mic
+                        li(ng-class="{'selectedli': team.insignia == 'et-strategy'}" ng-click="imgSelect('et-strategy')")
+                          i.et-strategy
+                        li(ng-class="{'selectedli': team.insignia == 'et-beaker'}" ng-click="imgSelect('et-beaker')")
+                          i.et-beaker
+                        li(ng-class="{'selectedli': team.insignia == 'et-caution'}" ng-click="imgSelect('et-caution')")
+                          i.et-caution
+                        li(ng-class="{'selectedli': team.insignia == 'et-recycle'}" ng-click="imgSelect('et-recycle')")
+                          i.et-recycle
+                        li(ng-class="{'selectedli': team.insignia == 'et-anchor'}" ng-click="imgSelect('et-anchor')")
+                          i.et-anchor
+                        li(ng-class="{'selectedli': team.insignia == 'et-profile-male'}" ng-click="imgSelect('et-profile-male')")
+                          i.et-profile-male
+                        li(ng-class="{'selectedli': team.insignia == 'et-profile-female'}" ng-click="imgSelect('et-profile-female')")
+                          i.et-profile-female
+                        li(ng-class="{'selectedli': team.insignia == 'et-bike'}" ng-click="imgSelect('et-bike')")
+                          i.et-bike
+                        li(ng-class="{'selectedli': team.insignia == 'et-hotairballoon'}" ng-click="imgSelect('et-hotairballoon')")
+                          i.et-hotairballoon
+                        li(ng-class="{'selectedli': team.insignia == 'et-globe'}" ng-click="imgSelect('et-globe')")
+                          i.et-globe
+                        li(ng-class="{'selectedli': team.insignia == 'et-genius'}" ng-click="imgSelect('et-genius')")
+                          i.et-genius
+                        li(ng-class="{'selectedli': team.insignia == 'et-map-pin'}" ng-click="imgSelect('et-map-pin')")
+                          i.et-map-pin
+                        li(ng-class="{'selectedli': team.insignia == 'et-chat'}" ng-click="imgSelect('et-chat')")
+                          i.et-chat
+                        li(ng-class="{'selectedli': team.insignia == 'et-heart'}" ng-click="imgSelect('et-heart')")
+                          i.et-heart
+                        li(ng-class="{'selectedli': team.insignia == 'et-cloud'}" ng-click="imgSelect('et-cloud')")
+                          i.et-cloud
+                        li(ng-class="{'selectedli': team.insignia == 'et-hazardous'}" ng-click="imgSelect('et-hazardous')")
+                          i.et-hazardous
+                        li(ng-class="{'selectedli': team.insignia == 'et-piechart'}" ng-click="imgSelect('et-piechart')")
+                          i.et-piechart
+                        li(ng-class="{'selectedli': team.insignia == 'et-refresh'}" ng-click="imgSelect('et-refresh')")
+                          i.et-refresh
+                      
+
+      // Modal Footer
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+        button.btn.btn-primary(type='button' ng-click="newGroup()") Create

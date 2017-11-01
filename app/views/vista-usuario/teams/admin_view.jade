@@ -1,0 +1,71 @@
+extends ../layout
+
+block subhead
+  link(href='/css/usuario_basico/search.css', rel='stylesheet', type='text/css')
+  link(href='/css/usuario_basico/teams.css', rel='stylesheet', type='text/css')
+
+block navbar
+  include ../navbar.jade 
+    
+block content
+  section(ng-controller="teamController" ng-init="init(#{JSON.stringify(user)}, #{JSON.stringify(team)})" ng-cloak)
+
+    header#page-header
+      h1 Teams
+      ol.breadcrumb
+        li 
+          a(ng-click="getURLLogged('dashboard')") PlantLabCo Toolbox
+        li 
+          a(ng-click="getURLLogged('teams')") Teams
+        li {{team.name}}
+        li Admin
+    .padding-20
+      .panel.panel-default
+        .panel-body
+          .row
+            .col-sm-9
+              .tab-content
+                div(ng-show="panel == 'dashboard'")
+                  include mixins_view/dashboard.jade
+                div(ng-show="panel == 'admin'")
+                  include mixins_view/admin.jade
+                div(ng-show="panel == 'invitations'")
+                  include mixins_view/invitations.jade
+                div(ng-show="panel == 'activities'")
+                  include mixins_view/activities.jade
+                div(ng-show="panel == 'leftgroup'")
+                  include mixins_view/leftgroup.jade
+            .col-sm-3
+              h4
+                i(class="{{team.insignia}}") &nbsp
+                strong {{team.name}}
+              p
+                em {{team.description}}
+                
+              hr.half-margins
+              div.listTeams
+                h4 
+                  strong Options
+                br
+                ul
+                  li
+                    a(ng-click="panel = 'dashboard';") Dashboard
+                  li
+                    a(ng-click="panel = 'admin'; editableTeam();") Manage team
+                  li
+                    a(ng-click="panel = 'invitations';getInvitations()") Invitations
+                  li
+                    a(ng-click="panel = 'activities'; loadActivities();") Recent activity
+                  li(ng-show="!team.isMandatory")
+                    a(ng-click="panel = 'leftgroup';") Leave Team
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/crispr-elements.js")
+
+  script(type="text/javascript" src="/js/services/team.js")
+  script(type="text/javascript" src="/js/services/team-invitations.js")
+  script(type="text/javascript" src="/js/services/team-requests.js")
+
+  script(type="text/javascript" src="/js/controllers/usuario_basico/activities.js")
+  script(type="text/javascript" src="/js/controllers/usuario_basico/singleTeam.js")

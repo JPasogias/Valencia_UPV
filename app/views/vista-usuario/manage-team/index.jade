@@ -1,0 +1,39 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="profileController" ng-init="init(#{JSON.stringify(team)})" ng-cloak)
+    #content.padding-20.container
+      // RIGHT
+      .col-sm-9
+        ul.nav.nav-tabs.nav-top-border
+          li
+            a(ng-class="{active:show == 'info'}" ng-click="show = 'info'", data-toggle='tab') Personal Information
+          li
+            a(ng-class="{active:show == 'avatar'}" ng-click="show = 'avatar'", data-toggle='tab') Avatar
+          li
+            a(ng-class="{active:show == 'members'}" ng-click="show = 'members'", data-toggle='tab') Members
+          li
+            a(ng-class="{active:show == 'requests'}" ng-click="show = 'requests'", data-toggle='tab') Team Code
+          //- li
+          //-   a(ng-class="{active:show == 'activities'}" ng-click="show = 'activities'", data-toggle='tab') Activities
+        .tab-content.mt-20
+          div(ng-show="show == 'info'")
+            include ./sections/info.jade
+          div(ng-show="show == 'avatar'")
+            include ./sections/avatar.jade
+          div(ng-show="show == 'members'")
+            include ./sections/members.jade
+          div(ng-show="show == 'requests'")
+            include ./sections/requests.jade
+          //- div(ng-show="show == 'activities'")
+          //-   include ./sections/activities.jade
+
+      // LEFT
+      .col-sm-3
+        include ./sections/right-panel
+
+block footerJS
+  script(src='/js/services/teams.js')
+  script(src='/js/controllers/manage-team/index.js')

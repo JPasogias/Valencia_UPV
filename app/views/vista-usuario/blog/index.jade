@@ -1,0 +1,61 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="blogController" ng-init="init()")
+    include sections/modal-delete
+    .container
+      .row
+        .col-md-9.col-sm-9
+          .blog-post-item(ng-repeat="post in posts" ng-show="filterC == 'ALL' || filterC == post.category")
+            figure.blog-item-small-image.mb-20
+              .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+                a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{post.image}}')
+                  img.img-fluid(height="100%" ng-src='{{post.image}}', alt='' style="max-height: 250px;")
+                  i.icon-hover-plus
+            .blog-item-small-content
+              h2
+                a(ng-show="!user" ng-href="/post/{{post._id}}") {{post.header}}
+                a(ng-show="user" ng-click="getURLLogged('post/' + post._id)") {{post.header}}
+              ul.blog-post-info.list-inline
+                li
+                  i.fa.fa-clock-o
+                  span.font-lato {{post.publishdate | date:'dd/MM/yyyy'}} 
+                //- li
+                  //- a(href='#')
+                  //-   i.fa.fa-comment-o
+                  //-   span.font-lato 28 Comments
+                li
+                  i.fa.fa-folder-open-o
+                  span.font-lato {{post.category}}
+                li
+                  a(ng-show="!user" ng-href="/profile/{{post.owner}}")
+                    i.fa.fa-user
+                    span.font-lato 
+                      strong {{post.owner}}
+                  a(ng-show="user" ng-click="getURLLogged('profile/' + post.owner)")
+                    i.fa.fa-user
+                    span.font-lato 
+                      strong {{post.owner}}
+              p {{post.abstract}}
+              a.btn.btn-reveal.btn-default(ng-show="!user.admin" ng-href="/post/{{post._id}}")
+                i.fa.fa-plus
+                span Read More
+              a.btn.btn-reveal.btn-default(ng-show="user.admin" ng-click="getURLLogged('post/' + post._id)")
+                i.fa.fa-plus
+                span Read More
+              &nbsp; &nbsp;
+              a.btn.btn-reveal.btn-warning(ng-show="user.admin" ng-click="getURLLogged('blog/manage-post/' + post._id)" style="color: white") 
+                i.fa.fa-pencil
+                span Edit
+              &nbsp; &nbsp;
+              button.btn.btn-reveal.btn-danger(ng-show="user.admin" type='button', data-toggle='modal', data-target='.deletemodal' style="color: white" ng-click="posibleDeletion(post._id)")
+                i.fa.fa-trash-o 
+                span Delete
+        .col-md-3.col-sm-3
+          include sections/auxpanel
+
+block footerJS
+  script(type="text/javascript" src="/js/services/blog.js")
+  script(type="text/javascript" src="/js/controllers/blog/index.js")

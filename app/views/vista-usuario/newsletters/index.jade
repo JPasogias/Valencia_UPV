@@ -1,0 +1,45 @@
+extends ../../usuario_basico/layout
+
+block subhead
+  link(href='/css/usuario_administrador/newsletters.css', rel='stylesheet', type='text/css')
+
+block navbar
+  include ../../usuario_basico/navbar 
+    
+block content
+  section.notebook(ng-controller="newslettersController" ng-cloak)
+    header#page-header
+      h1 Newsletters
+      ol.breadcrumb
+        li Hype-It Toolbox
+        li Newsletters
+    #content.padding-20.container
+      .row
+        .col-md-8.well
+          form.ng-pristine.ng-valid
+            .form-group
+              label.control-label Asunto
+              input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='msg.header', placeholder='Asunto')
+            .form-group
+              label.control-label Mensaje
+              div(text-angular='', ng-model='msg.content', name='demo-editor', ta-text-editor-class='border-around', ta-html-editor-class='border-around' class="htmledit" ta-toolbar="toolbar")
+
+            center.margiv-top10
+              button.btn.btn-primary(ng-click='send()')
+                i.fa.fa-check
+                |  Enviar
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              span.elipsis
+                strong Opciones
+            .panel-body
+              label.control-label Enviar mensaje a :
+              select.form-control(ng-model="msg.destination")
+                option(value='1') Mi mismo
+                option(value='2') Todos
+              i.fancy-arrow
+
+block footerJS
+  script(type="text/javascript" src="/js/services/newsletter.js")
+  script(type="text/javascript" src="/js/controllers/usuario_administrador/newsletters.js")

@@ -1,0 +1,23 @@
+# Gitignore
+!.gitignore
+
+# Logs
+logs
+*.log
+
+# Dependency directory
+# Commenting this out is preferred by some people, see
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
+# node_modules
+
+# Bower components
+# public/components
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Temp path
+tmp
+
+# User local config file
+# config/config/config.local.json

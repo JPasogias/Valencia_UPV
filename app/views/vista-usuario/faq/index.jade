@@ -1,0 +1,68 @@
+extends ../../layout
+
+block subhead
+  link(href='/css/faq.css', rel='stylesheet', type='text/css')
+
+
+block content
+  section.padding-xlg
+    .container
+      h1.mb-0 Frequently Asked Questions
+      span.font-lato.fs-18.fw-300.mb-30 Last updated: 08/28/2017
+      h6 &nbsp;
+      .faq-c
+        .faq-q
+          span.faq-t +
+          | When it is published PlantLabCo Magazine?
+        .faq-a
+          p
+            | PlantLabCo Magazine is published seasonaly, in each edition you will find a compilation of the latest news on Plant SynBio.
+
+      .faq-c
+        .faq-q
+          span.faq-t +
+          | What is the Challenges section on the magazine?
+        .faq-a
+          p
+            | We like for our community to stay sharp so we throw challenges that last a season and if you completed you can appear on the magazine with the challenge you completed.
+      .faq-c
+        .faq-q
+          span.faq-t +
+          | Can I pusblish on the magazine?
+        .faq-a
+          p
+            | We like to reward active users whose work has potential and impact on Plant SynBio so we keep a section on the magazine. We will get in conctact with you if you are this kind of user and trammit your publication     
+      .faq-c
+        .faq-q
+          span.faq-t +
+          | Why do I have to sing in to register experiments?
+        .faq-a
+          p
+            | It is important to have the experiments registered to give credit to the researchers, and also for other people to be able to cite properly and can get in contact if neccesary
+      .faq-c
+        .faq-q
+          span.faq-t +
+          | What is the modelling tool?
+        .faq-a
+          p
+            | The modelling tool is a service we provide to help researchers model their genetic circuit, it allows to recreate any genetic circuit and it returns a reduced model script that can be runned on MATLAB.
+
+
+
+
+block footerJS
+  script.
+    $(".faq-q").click( function () {
+      var container = $(this).parents(".faq-c");
+      var answer = container.find(".faq-a");
+      var trigger = container.find(".faq-t");
+
+      answer.slideToggle(200);
+
+      if (trigger.hasClass("faq-o")) {
+        trigger.removeClass("faq-o");
+      }
+      else {
+        trigger.addClass("faq-o");
+      }
+    });

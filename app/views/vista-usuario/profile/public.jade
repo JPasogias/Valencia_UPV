@@ -1,0 +1,63 @@
+extends ../../layout
+
+block subhead
+
+block content
+
+  section.padding-xs(ng-controller="profileController" ng-init="init(#{JSON.stringify(user)}, #{JSON.stringify(userview)})" ng-cloak)
+    .container
+      .row
+        .col-md-8
+          .row
+            .col-sm-6
+              .form-group
+                h3
+                  strong Name:
+                p {{userview.personalInfo.name}}
+            .col-sm-6
+              .form-group
+                h3 
+                  strong Surname:
+                p {{userview.personalInfo.lastname}}
+            .col-sm-6
+              .form-group
+                h3
+                  strong E-mail:
+                p(ng-disabled="true") {{userview.personalInfo.email}}
+            .col-sm-6
+              .form-group
+                h3
+                  strong Telephone:
+                p {{userview.personalInfo.phone}}
+            .col-sm-12
+              .form-group
+                h3
+                  strong Interests:
+                p {{userview.personalInfo.interests}}
+            .col-sm-12
+              .form-group
+                h3
+                  strong Job:
+                p {{userview.personalInfo.occupation}}
+            .col-sm-12
+              .form-group
+                h3
+                  strong About the user:
+                p {{userview.personalInfo.aboutMe}}
+            .col-sm-12
+              .form-group
+                h3
+                  strong Website:
+                p {{userview.personalInfo.website}}
+        .col-md-4
+          .thumbnail.text-center
+            figure.blog-item-small-image.mb-20
+              .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+                a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{userview.personalInfo.image}}')
+                  img.img-fluid(height="100%" ng-src='{{userview.personalInfo.image}}', alt='' )
+                  i.icon-hover-plus
+    
+
+block footerJS
+  script(src='/js/services/user.js')
+  script(src='/js/controllers/usuario_basico/profile/profilepublic.js')

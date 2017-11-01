@@ -1,0 +1,73 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="experimentController" ng-init="init()" ng-cloak)
+    include sections/modal-delete
+    .container
+      .row
+        .col-md-9.col-sm-9
+          .container
+            .row(ng-repeat="experiment in experiments")
+              .col-md-12(ng-show="$index != 0")
+                .heading-title.heading-border-bottom
+              .col-md-4
+                figure.blog-item-small-image.mb-20
+                  .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+                    a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{experiment.abstractimage}}')
+                      img.img-fluid(height="100%" ng-src='{{experiment.abstractimage}}', alt='' )
+                      i.icon-hover-plus
+              .col-md-8
+                .blog-item-small-content
+                  h4
+                    a(ng-click="getURLLogged('experiment/' + experiment._id)") {{experiment.title}}
+                  ul.blog-post-info.list-inline
+                    li
+                      i.fa.fa-clock-o
+                      span.font-lato {{experiment.creationDate | date:'dd/MM/yyyy'}} 
+                    //- li
+                      //- a(href='#')
+                      //-   i.fa.fa-comment-o
+                      //-   span.font-lato 28 Comments
+                    li
+                      i.fa.fa-folder-open-o
+                      span.font-lato {{experiment.category}}
+                    li
+                      i.fa.fa-folder-open-o
+                      span.font-lato {{experiment.status}}
+                    li
+                      a(ng-show="!user" ng-href="/profile/{{experiment.owner}}")
+                        i.fa.fa-user
+                        span.font-lato 
+                          strong {{experiment.owner}}
+                      a(ng-show="user" ng-click="getURLLogged('profile/' + experiment.owner)")
+                        i.fa.fa-user
+                        span.font-lato 
+                          strong {{experiment.owner}}
+                  p {{experiment.abstract}}
+                  a.btn.btn-reveal.btn-default(style="margin-bottom:10px;" ng-click="getURLLogged('experiment/' + experiment._id)")
+                    i.fa.fa-plus
+                    span Read More
+                  &nbsp; &nbsp;
+                  a.btn.btn-reveal.btn-warning(style="margin-bottom:10px; color: white" ng-show="experiment.idUser == user._id" ng-click="getURLLogged('experiments/manage-experiment/' + experiment._id)" ) 
+                    i.fa.fa-pencil
+                    span Edit
+                  &nbsp; &nbsp;
+                  button.btn.btn-reveal.btn-danger(style="margin-bottom:10px; color: white" ng-show="experiment.idUser == user._id" type='button', data-toggle='modal', data-target='.deletemodal' ng-click="posibleDeletion(experiment._id)")
+                    i.fa.fa-trash-o 
+                    span Delete
+            .row
+              .col-md-12
+                .heading-title.heading-border-bottom(style="margin-top:20px")
+
+        .col-md-3.col-sm-3
+          include sections/auxpanel
+
+      
+
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/experiments.js")
+  script(type="text/javascript" src="/js/controllers/experiments/index.js")

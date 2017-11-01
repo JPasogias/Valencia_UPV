@@ -1,0 +1,35 @@
+extends ../layout
+
+block subhead
+  link(href='/css/usuario_basico/teams.css', rel='stylesheet', type='text/css')
+
+block navbar
+  include ../navbar.jade 
+    
+block content
+  section(ng-controller="teamController" ng-init="init(#{JSON.stringify(user)})" ng-cloak)
+    header#page-header
+      h1 Teams
+      ol.breadcrumb
+        li 
+          a(ng-click="getURLLogged('dashboard')") PlantLabCo Toolbox
+        li 
+          a(ng-click="getURLLogged('teams')") Teams
+
+    #content.padding-20.container
+      include sections/newTeam-modal.jade
+      
+      .row(ng-show="myTeams.length || myTeamsSearch.length")
+        .col-sm-8
+          include sections/index-left-panel.jade
+        .col-sm-4
+          include sections/index-right-panel.jade
+      .row(ng-show="!myTeams.length")
+        .col-xs-6.col-xs-offset-3
+          include sections/index-right-panel.jade
+
+block footerJS
+  script(type="text/javascript" src="/js/services/team.js")
+  script(type="text/javascript" src="/js/services/team-invitations.js")
+
+  script(type="text/javascript" src="/js/controllers/usuario_basico/teams.js")

@@ -1,0 +1,73 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="blogController" ng-init="init(#{JSON.stringify(idPost)})" ng-cloak)
+    .container
+      .row
+        .col-md-6
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Title
+              input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='msg.header')
+        .col-md-3
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Date
+              input.form-control.datepicker(id="datepicker" type='text', data-format='yyyy-mm-dd', data-lang='en', data-rtl='false')
+        .col-md-3
+          form.ng-pristine.ng-valid
+            .mydiv.form-group
+              label.control-label Category
+              select.form-control(ng-model="msg.category")
+                option(value='Latest on Plant SynBio') Latest on Plant SynBio
+                option(value='The world of Transgenics') The world of Transgenics
+                option(value='Upcoming Talks') Upcoming Talks
+                option(value='Top Experiments') Top Experiments 
+                option(value='Seasonal Contributors') Seasonal Contributors
+                option(value='Plant SynBio Mysteries') Plant SynBio Mysteries
+                option(value='Challenges') Challenges
+              i.fancy-arrow
+      .row
+        .col-md-9
+          form.ng-pristine.ng-valid
+            label Content      
+            textarea.summernote.form-control(id="summernoteEditor" ng-model='msg.msg' data-height='350', data-lang='en-US')
+        .col-md-3
+          form#data.ng-pristine.ng-valid
+            label Image
+            .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+              a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{msg.image}}')
+                img.img-fluid(width="100%" ng-src='{{msg.image}}', alt='')
+                i.icon-hover-plus
+            div(ng-show="false")
+              input#image_file.custom-file-upload(type='file', name='image_file[]', data-btn-text='Select a File' nv-file-select="" uploader="uploader")
+              small.text-muted.block Max file size: 10Mb (jpg/png)
+              input#fileinput(type='submit', value='Submit' style='display: none;')
+          button#falseinput.btn.btn-primary(style="width:100%")
+            i.fa.fa-camera.fa-fw
+            |  EDITAR
+      .row
+        .col-md-12
+          form.ng-pristine.ng-valid
+            label Image url (instead upload an image for copyright reasons)    
+            input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='msg.image')
+
+
+
+
+      .row
+        .col-md-12(ng-show="msg._id")
+          center.margiv-top20
+            button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click='edit()') EDIT POST
+        .col-md-12(ng-show="!msg._id")
+          center.margiv-top20
+            button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click='send()') PUBLISH POST
+
+
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/blog.js")
+  script(type="text/javascript" src="/js/controllers/blog/manage-post.js")

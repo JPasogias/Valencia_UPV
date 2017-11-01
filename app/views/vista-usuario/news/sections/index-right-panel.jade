@@ -1,0 +1,15 @@
+.card
+  .panel.panel-default
+    .panel-heading
+      span.elipsis
+        strong Crear un post
+    .panel-body
+      .alert.alert-bordered-dotted.margin-bottom-30
+        h4
+          strong Comienza a escribir la seccion de noticias
+        p
+          | Ponte en contacto con tus usuarios a traves de la sección de noticias, esta seccion actualiza el dashboard y la vista de blog de usuario anonimo
+        div(style="padding-top:20px;")
+          center.padding-20
+            a.btn.btn-3d.btn-black(type='button', ng-click="getURLLogged('news/new-post')")
+              | CREAR POST

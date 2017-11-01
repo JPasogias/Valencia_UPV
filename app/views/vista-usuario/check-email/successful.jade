@@ -1,0 +1,32 @@
+extends ../../layout
+
+block subhead
+  link(href='/HTML_BS4/assets/plugins/slider.revolution/css/extralayers.css', rel='stylesheet', type='text/css')
+  link(href='/HTML_BS4/assets/plugins/slider.revolution/css/settings.css', rel='stylesheet', type='text/css')
+
+block content
+
+  section#slider.slider.fullwidthbanner-container.roundedcorners(style='max-height: none; overflow: visible; height: 750px;')
+    #revslider-408.fullscreenbanner.revslider-initialised.tp-simpleresponsive(data-navigationstyle='', style='height: 100%; max-height: none; backface-visibility: hidden; transform-style: flat; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.00166, 0, 0, 0, 1);')
+      ul.tp-revslider-mainul(style='display: block; overflow: hidden; width: 100%; height: 100%; max-height: none;')
+        // SLIDE
+        li.tp-revslider-slidesli.active-revslide.current-sr-slide-visible(data-transition='random', data-slotamount='1', data-masterspeed='1000', data-saveperformance='off', data-title='Slide', style='width: 100%; height: 100%; overflow: hidden; z-index: 20; visibility: inherit; opacity: 1;')
+          .slotholder(style='width:100%;height:100%;', data-duration='undefined', data-zoomstart='undefined', data-zoomend='undefined', data-rotationstart='undefined', data-rotationend='undefined', data-ease='undefined', data-bgpositionend='undefined', data-bgposition='center bottom', data-kenburns='undefined', data-easeme='undefined', data-bgfit='cover', data-bgfitend='undefined', data-owidth='undefined', data-oheight='undefined')
+            .tp-bgimg.defaultimg(data-lazyload='demo_files/images/1200x800/4-min.jpg', data-bgfit='cover', data-bgposition='center bottom', data-bgrepeat='no-repeat', data-lazydone='undefined', src='demo_files/images/1200x800/4-min.jpg', data-src='/assets/images/_smarty/1x1.png', style='background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url("/images/check-email2.png"); background-size: cover; background-position: center bottom; width: 100%; height: 100%; opacity: 1; visibility: inherit;')
+          .tp-dottedoverlay.twoxtwo
+            // dotted overlay
+          .overlay.dark-3
+            // dark overlay [1 to 9 opacity]
+          .tp-caption.customin.ltl.tp-resizeme.text_white.start(data-x='center', data-y='180', data-customin='x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;', data-speed='800', data-start='1000', data-easing='easeOutQuad', data-splitin='none', data-splitout='none', data-elementdelay='0.01', data-endelementdelay='0.1', data-endspeed='1000', data-endeasing='Power4.easeIn', style='z-index: 10; transition: all 0s ease 0s; min-height: 0px; min-width: 0px; line-height: 22px; border-width: 0px; margin: 0px; padding: 1px 7px; letter-spacing: 0px; font-size: 14px; left: 233.211px; top: 188.792px; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.0025, 0, 0, 0, 1); transform-origin: 50% 0% 0px;')
+            span.fw-300(style='transition: all 0s ease 0s; min-height: 0px; min-width: 0px; line-height: 22px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-size: 14px;') THE FIRST SOCIAL NETWORK FOR SYNBIO RESEARCHERS
+          .tp-caption.customin.ltl.tp-resizeme.large_bold_white.start(data-x='center', data-y='230', data-customin='x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;', data-speed='800', data-start='1200', data-easing='easeOutQuad', data-splitin='none', data-splitout='none', data-elementdelay='0.01', data-endelementdelay='0.1', data-endspeed='1000', data-endeasing='Power4.easeIn', style='z-index: 10; transition: all 0s ease 0s; min-height: 0px; min-width: 0px; line-height: 39px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-size: 38px; left: 188.226px; top: 221.5px; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.0025, 0, 0, 0, 1); transform-origin: 50% 0% 0px;')
+            | WELCOME TO PLANTLABCO
+          .tp-caption.customin.ltl.tp-resizeme.small_light_white.start(data-x='center', data-y='350', data-customin='x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;', data-speed='800', data-start='1400', data-easing='easeOutQuad', data-splitin='none', data-splitout='none', data-elementdelay='0.01', data-endelementdelay='0.1', data-endspeed='1000', data-endeasing='Power4.easeIn', style='z-index: 10; width: 750px; max-width: 490.625px; white-space: normal; text-align: center; transition: all 0s ease 0s; min-height: 0px; min-width: 0px; line-height: 18px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-size: 18px; left: 147.188px; top: 300px; visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.0025, 0, 0, 0, 1); transform-origin: 50% 0% 0px;')
+            | Your email address has been 
+            strong verified
+
+        
+block footerJS
+  script(type='text/javascript', src='/HTML_BS4/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js')
+  script(type='text/javascript', src='/HTML_BS4/assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js')
+  script(type='text/javascript', src='/HTML_BS4/assets/js/view/demo.revolution_slider.js')

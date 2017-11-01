@@ -1,0 +1,145 @@
+extends ../../layout
+
+block subhead
+    
+block content
+  div(ng-controller='loginController' ng-init="init()" ng-cloak)
+    section.m-0.bannerigem(data-background-delay='3500', data-background-fade='1000', data-background='\
+    /images/usuario_anonimo/banner1.png\
+    ')
+      .container.z-index-1
+        .row
+          .col-lg-6
+              .alert.alert-mini.alert-danger.margin-bottom-30(ng-show="validUser === false")
+                strong Oh snap!
+                |  Login Incorrect!
+              form.sky-form.boxed(ng-show="!isRegister")
+                header
+                  i.fa.fa-users
+                  |  Sign In
+                fieldset.nomargin.mb-0
+                  .row
+                    .col-xs-12
+                      label.label.margin-top-20 E-mail / Username
+                      label.input
+                        i.ico-append.fa.fa-envelope
+                        input(type='text' ng-model="email")
+                        span.tooltip.tooltip-top-right Email Address / Username
+                      label.label.margin-top-20 Password
+                      label.input
+                        i.ico-append.fa.fa-lock
+                        input(type='password' ng-model="password")
+                        b.tooltip.tooltip-top-right Type your Password
+                      label.checkbox.margin-top-20
+                        input(type='checkbox', name='checkbox-inline' ng-model="checkbox")
+                        i
+                        |  Keep me logged in
+                      label.mt-20
+                        |  Read about our 
+                        a(href="/terms-and-conditions", target="_blank") terms and conditions
+                  .row.pb-10(style="background-color: #dddddd;")
+                    .col-xs-12
+                      center.mt-10
+                        button.btn.btn-3d.btn-gris(type='button' ng-click="isRegister = !isRegister")
+                          |  REGISTER
+                        button.btn.btn-3d.btn-azul(type='button' ng-click="login()")
+                          |  OK, LOG IN
+                      
+              form.sky-form.boxed(ng-show="isRegister")
+                header
+                  i.fa.fa-user
+                  |  Registry
+                fieldset.nomargin.mb-0
+                  .row.mb-5
+                    .col-sm-6
+                      label.label.margin-top-20 Name
+                      label.input
+                        i.ico-append.fa.fa-user
+                        input(type='text' ng-model="user.personalInfo.name")
+                        span.tooltip.tooltip-top-right Name
+                    .col-sm-6
+                      label.label.margin-top-20 Lastname
+                      label.input
+                        i.ico-append.fa.fa-user
+                        input(type='text' ng-model="user.personalInfo.lastname")
+                        span.tooltip.tooltip-top-right Lastname
+                    .col-sm-6
+                      label.label.margin-top-20 Email address
+                      label.input
+                        i.ico-append.fa.fa-envelope
+                        input(type='email' ng-model="user.email")
+                        span.tooltip.tooltip-top-right E-mail
+                    .col-sm-6
+                      label.label.margin-top-20 Password
+                      label.input
+                        i.ico-append.fa.fa-lock
+                        input(type='password' ng-model="user.password")
+                        b.tooltip.tooltip-top-right Type your password
+                  .row
+                    .col-xs-12
+                      label.mt-20
+                        |  Read about our 
+                        a(href="/terms-and-conditions", target="_blank") terms and conditions
+                    
+                  
+                  .row.pb-10(style="background-color: #dddddd;")
+                    .col-xs-12
+                      center.mt-10
+                        button.btn.btn-3d.btn-gris(type='button' ng-click="isRegister = !isRegister")
+                          |  LOG IN
+                        button.btn.btn-3d.btn-azul(type='button' ng-click="register()")
+                          |  OK, REGISTER
+          .col-lg-6.text-md-right.text-sm-center.text-xs-center
+            h1.m-0.fs-40.fw-400.text-white.wow.fadeInUp.animated(data-wow-delay='0.4s', style='visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;') JOIN OUR COMMUNITY
+            p.lead.fs-16.fw-300.text-white.wow.fadeInUp.animated(data-wow-delay='0.7s', style='visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;') THE FIRST SOCIAL NETWORK FOR SYNBIO RESEARCHERS
+      span.overlay.dark-6.z-index-0
+
+    section.section-sm
+      .container
+        .row.countTo-sm.text-center
+          
+          .col-xs-6.col-sm-3
+            img.img-responsive(width="50%" src="/images/default-profile-2.png")
+            .block.fs-40(style='color: #005e72;')
+              strong.countTo.fs-40(data-speed='3000') {{count.usersService}}
+            h3.fs-15.mt-10.mb-0 USERS
+          
+          .col-xs-6.col-sm-3
+            img.img-responsive(width="50%" src="/images/default-experiment-2.png")
+            .block.fs-40(style='color: #005e72;')
+              strong.countTo.fs-40(data-speed='3000') {{count.experimentsService}}
+            h3.fs-15.mt-10.mb-0 EXPERIMENTS
+          
+          .col-xs-6.col-sm-3
+            img.img-responsive(width="50%" src="/images/default-post-2.png")
+            .block.fs-40(style='color: #005e72;')
+              strong.countTo.fs-40(data-speed='3000') {{count.blogService}}
+            h3.fs-15.mt-10.mb-0 POSTS
+          
+          .col-xs-6.col-sm-3
+            img.img-responsive(width="50%" src="/images/default-forum-2.png")
+            .block.fs-40(style='color: #005e72;')
+              strong.countTo.fs-40(data-speed='3000') {{count.forumMensajeService}}
+            h3.fs-15.mt-10.mb-0 FORUMS
+
+    .alert.alert-success.bordered-bottom.m-0
+      .container
+        .row
+          .col-md-9.col-sm-12
+            h3
+              | You can get in contact with us by 
+              a(href="mailto:support@plantlabco.org?Subject=Hello%20again" target="_top")
+                span
+                  strong(style='color: #005e72;') support@plantlabco.org
+            p.font-lato.fw-300.fs-20.mb-0(style='color: #00929e;')
+              | We truly care about our users and our product.
+          .col-md-3.col-sm-12.text-right
+            a.btn.btn-azul.btn-lg(href='/about-us') LEARN MORE
+
+
+block footerJS
+  script(src="/js/services/user.js")
+  script(src="/js/services/experiments.js")
+  script(src="/js/services/blog.js")
+  script(src="/js/services/forum-mensaje.js")
+  script(src='/js/controllers/login/index.js')

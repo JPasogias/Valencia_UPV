@@ -1,0 +1,32 @@
+// AVATAR TAB
+#avatar.tab-pane.fade.in.active
+  form.clearfix
+    .form-group
+      .row
+        .col-md-3
+        .col-md-6
+          .thumbnail
+            figure.blog-item-small-image.mb-20
+              .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+                a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{picfile || team.insignia}}')
+                  img.img-fluid(height="100%" ng-src='{{picfile || team.insignia}}', alt='' )
+                  i.icon-hover-plus
+      .row
+        .col-md-3
+        .col-md-6
+          div(style="display: none;")
+            form#data
+              input#image_file.custom-file-upload(type='file', name='image_file[]', data-btn-text='Select a File' nv-file-select="" uploader="uploader")
+              small.text-muted.block Max file size: 10Mb (jpg/png)
+              input#fileinput(type='submit', value='Submit' style='display: none;')
+          button#falseinput.btn.btn-primary(style="width:100%")
+            i.fa.fa-camera.fa-fw
+            |  EDITAR
+  .mt-5
+    hr
+    center.mt-10
+      button.btn.btn-3d.btn-azul(type='button' ng-click="cancel()")
+        |  CANCEL
+      &nbsp;&nbsp;
+      button.btn.btn-3d.btn-gris(type='button' ng-click='save()')
+        |  SAVE CHANGES

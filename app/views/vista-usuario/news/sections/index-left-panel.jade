@@ -1,0 +1,28 @@
+div(ng-show="posts.length")
+  .table-responsive
+    table.table.table-hover.table-vertical-middle.nomargin
+      thead
+        tr
+          th(width="40%") Titulo
+          th(width="30%") Fecha de creación
+          th(width="20%") Autor
+          th(width="10%") 
+          th
+          th
+      tbody
+        tr(ng-repeat="post in posts")
+          td
+            {{post.header}}
+          td
+            {{post.creationDate | date : "dd/MM/yyyy"}}
+          td
+            {{post.username}}
+          td
+            span.label.label-success(ng-show="post.public") Publico 
+            span.label.label-info(ng-show="!post.public") Privado 
+          td(style="width:100%; text-align:right")
+            button.btn.btn-warning(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="editPost(post._id)")
+              i(class="fa fa-edit")
+          td
+            button.btn.btn-danger(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="deletePost(post)")
+              i(class="fa fa-times")

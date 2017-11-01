@@ -1,0 +1,114 @@
+doctype html
+html(lang='en')
+  head
+    
+    meta(charset='utf-8')
+    title PlantLabCo - THE FIRST SOCIAL NETWORK FOR SYNBIO RESEARCHERS
+    meta(name='keywords', content='HTML5,CSS3,Template')
+    meta(name='description', content='')
+    meta(name='Author', content='Dorin Grigoras [www.stepofweb.com]')
+    meta(name='viewport', content='width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0')
+  
+    block tophead
+    
+    //- Angular Material
+    link(rel="stylesheet" href="/components/angular-material/angular-material.min.css")
+    //- Bootstrap
+    link(rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.min.css")
+    //- Toastr
+    link(rel="stylesheet" href="/components/toastr/toastr.css")
+        
+    // THEME CSS
+    meta(name='viewport', content='width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/plugins/bootstrap/css/bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/css/essentials.css', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/css/layout.css', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/css/color_scheme/green.css', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/css/header-1.css', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/css/pack-realestate.css', rel='stylesheet', type='text/css')
+    link(href='/HTML_BS4/assets/css/custom-forms-v2.css', rel='stylesheet', type='text/css')
+
+
+    link(href='/css/custom.css', rel='stylesheet', type='text/css')
+
+    block subhead
+
+
+  body.smoothscroll.enable-animation(ng-app="plantcoApp" ng-controller="commonController" ng-cloak)
+    #map-fullscreen
+      button
+        i.fa.fa-remove
+      #gmap-init
+    #cookie-alert.alert.alert-warning.alert-position-bottom(data-expire='30')
+      .container
+        button.close(type='button', data-dismiss='alert')
+          span.cookie-close-btn(aria-hidden='true') ×
+          span.sr-only Close
+        p.fs-13
+          i.fa.fa-warning
+          | 					We use cookies to provide you with a better service. 
+          | 					Carry on browsing if you're happy with this, or find out how to 
+          a(href='#') manage cookies
+          | .
+
+    #wrapper(ng-init="initController(#{JSON.stringify(user)})")
+      include _sections/modal-new-team
+    
+      #header.navbar-toggleable-md.clearfix.header-sm.sticky.disable-uppercase
+        header#topNav
+          .container
+            button.btn.btn-mobile(data-toggle='collapse', data-target='.nav-main-collapse')
+              i.fa.fa-bars
+            a.logo.float-left(ng-click="getURLLogged('')")
+              img(src='/images/logo.png', alt='')
+            .navbar-collapse.collapse.float-right.nav-main-collapse.p-0
+              include _sections/navbar.jade
+
+
+      div
+        block content                
+      
+              
+  // FOOTER
+  block blockFooter
+    include _sections/footer.jade
+
+
+
+    a#toTop(href='#')
+    #preloader
+      .inner
+        span.loader
+
+
+          
+    //- Angular
+    script(src="/components/angular/angular.min.js")
+    //- JQuery
+    script(src="/components/jquery/dist/jquery.min.js")
+    //- Bootstrap
+    script(src="/components/tether/dist/js/tether.min.js")
+    script(src="/components/bootstrap/dist/js/bootstrap.min.js")
+    //- Toastr
+    script(src="/components/toastr/toastr.min.js")
+    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js')
+
+
+    //- My configuration
+    script(src='/js/ready.js')
+    script(src="/js/app.js")
+      
+    script(src="/js/services/teams.js")
+    script(src="/js/services/activities.js")
+    script(src='/js/controllers/common.js')
+
+
+
+    script(type='text/javascript').
+      var plugin_path = '/HTML_BS4/assets/plugins/';
+    script(type='text/javascript', src='/HTML_BS4/assets/plugins/jquery/jquery-3.2.1.min.js')
+    script(type='text/javascript', src='/HTML_BS4/assets/js/scripts.js')
+    script(async='', type='text/javascript', src='/HTML_BS4/assets/js/view/pack_realestate.js')
+      
+    block footerJS

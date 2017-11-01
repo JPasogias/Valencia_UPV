@@ -1,0 +1,80 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="forumController" ng-init="init()" ng-cloak)
+    include sections/newCategory-modal.jade 
+    .container
+      .row(ng-show="{{user.admin}}")
+        .col-md-9
+        .col-md-3
+          button(type='button' class="btn btn-primary btn-sm btn-block" , data-toggle='modal', data-target='#newForumCategory') Add category
+          br
+      .row
+        .col-md-12
+          table.table.table-vertical-middle.mb-60
+            thead
+              tr.fs-15
+                th.fw-400 GENERAL FORUM
+                th.text-center.hidden-xs-down.fw-100.fw-300 TOPICS
+                th.text-center.hidden-xs-down.fw-100.fw-300 POSTS
+                th.text-center.hidden-xs-down.fw-200.fw-300 FRESHNESS
+            tbody
+              tr(ng-repeat="category in categories | filter:{ type: 'general' }")
+                td
+                  h4.m-0.fs-16
+                    a(href='categories/{{category._id}}')
+                      | {{category.title}}
+                    ul.list-inline.categories.m-0.text-muted.fs-11.hidden-xs-down
+                      li {{category.description}}
+                td.text-center.hidden-xs-down
+                  a(href='#') {{category.numHilos}}
+                td.text-center.hidden-xs-down
+                  a(href='#') {{category.numPost}}
+                td.text-center.hidden-xs-center
+                  div(ng-show="category.lastPost != '' ")
+                    small.block.fs-11.text-muted {{category.lastPost.creationDate | date:'dd/MM/yyyy hh:mm'}}
+                    a.fs-13(href='/users/{{user._id}}/profile/{{category.lastPost.username}}') by {{category.lastPost.username}}
+                  div(ng-show="category.lastPost == '' ")
+                    small.block.fs-11.text-muted Unknow
+                    a.fs-13(href='#') Be the first
+              
+              
+          table.table.table-vertical-middle.mb-60
+            thead
+              tr.fs-15
+                th.fw-400 SUPPORT
+                th.text-center.hidden-xs-down.fw-100.fw-300
+                th.text-center.hidden-xs-down.fw-100.fw-300
+                th.text-center.hidden-xs-down.fw-200.fw-300
+            tbody
+              tr(ng-repeat="category in categories | filter:{ type: 'support' }")
+                td
+                  h4.m-0.fs-16
+                    a(href='categories/{{category._id}}')
+                      | {{category.title}}
+                    ul.list-inline.categories.m-0.text-muted.fs-11.hidden-xs-down
+                      li {{category.description}}
+                td.text-center.hidden-xs-down
+                  a(href='#') {{category.numHilos}}
+                td.text-center.hidden-xs-down
+                  a(href='#') {{category.numPost}}
+                td.text-center.hidden-xs-center
+                  div(ng-show="category.lastPost != '' ")
+                    small.block.fs-11.text-muted {{category.lastPost.creationDate | date:'dd/MM/yyyy hh:mm'}}
+                    a.fs-13(href='/users/{{user._id}}/profile/{{category.lastPost.username}}') by {{category.lastPost.username}}
+                  div(ng-show="category.lastPost == '' ")
+                    small.block.fs-11.text-muted Unknow
+                    a.fs-13(href='#') Be the first
+
+
+        
+
+
+        
+block footerJS
+  script(type="text/javascript" src="/js/controllers/usuario_basico/forum/categories.js")
+  script(type="text/javascript" src="/js/services/forum-categoria.js")
+  script(type="text/javascript" src="/js/services/forum-hilo.js")
+  script(type="text/javascript" src="/js/services/forum-mensaje.js")

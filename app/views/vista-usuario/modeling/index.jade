@@ -1,0 +1,112 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="modelingController")
+    .container
+      include sections/modal-Constitutive
+      include sections/modal-InducibleFactorOne
+      include sections/modal-InducibleFactorOneTwoOperators
+      include sections/modal-InducibleFactorTwo
+
+      .row
+        .col-sm-6.col-md-3(ng-click="startCreationItem('Constitutive')")
+          .thumbnail
+              img.img-fluid(src='/images/modelling/consti.png', alt='')
+              .caption.mt-5
+                //h4.m-0 Constituvive
+                small.mb-20.block &nbsp;  
+        .col-sm-6.col-md-3(ng-click="startCreationItem('IndOneOOneF')")
+          .thumbnail
+              img.img-fluid(src='/images/modelling/induoneone.png', alt='')
+              .caption.mt-5
+                //h4.m-0 Inducible Factor One
+                small.mb-20.block &nbsp;  
+        .col-sm-6.col-md-3(ng-click="startCreationItem('IndOneOTwoO')")
+          .thumbnail
+              img.img-fluid(src='/images/modelling/induonetwo.png', alt='')
+              .caption.mt-5
+                //h4.m-0 Inducible Factor One
+                small.mb-45.block 
+        .col-sm-6.col-md-3(ng-click="startCreationItem('IndTwoO')")
+          .thumbnail
+              img.img-fluid(src='/images/modelling/indutwo.png', alt='')
+              .caption.mt-5
+                //h4.m-0 Inducible Factor Two
+                small.mb-45.block &nbsp;  
+
+    .container
+      .row(ng-show="items.length > 0")
+        .col-xs-9
+          h4 Elements 
+        .col-xs-3
+          button(type='button' class="btn btn-primary btn-sm btn-block" ng-click="dependencymatrix = !dependencymatrix") Show dependency matrix
+
+        .col-xs-12
+          .table-responsive
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  th(style="font-size: 12px") Type
+                  th(style="font-size: 12px",align='center') Name
+                  th(style="font-size: 12px",align='center') Dependency 1
+                  th(style="font-size: 12px",align='center') Dependency 2
+                  th(style="font-size: 12px",align='center')   
+              tbody
+                tr(ng-repeat="i in items")
+                  td(style="font-size: 12px") {{i.type}}
+                  td(style="font-size: 12px", align='center') {{i.name}}
+                  td(style="font-size: 12px", align='center') {{i.dependency1}}
+                  td(style="font-size: 12px", align='center') {{i.dependency2}}
+                  td(style="font-size: 12px; text-align:right")
+                    button.btn.btn-warning(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="accessElement($index, i.type)")
+                      i(class="fa fa-edit")
+                    button.btn.btn-danger(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="removeElement($index)")
+                      i(class="fa fa-times")
+      .row(ng-show="dependencymatrix")
+        .col-xs-12
+          h4 Dependency matrix 
+        .col-xs-12
+          .table-responsive
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  th
+                  th(style="font-size: 12px" ng-repeat="i in items") {{i.name}}
+              tbody
+                tr(ng-repeat="i in items")
+                  td(style="font-size: 12px")
+                    div {{i.name}}
+                  td(style="font-size: 12px" ng-repeat="k in items")
+                    div(ng-show="(items[$index].name == items[$parent.$index].dependency1)") x
+                    div(ng-show="(items[$index].name == items[$parent.$index].dependency2)") x
+
+                    //- div
+                      {{$parent.$index}}
+                      {{$index}}
+
+    .container
+      .row
+        .col-xs-12
+          center.margiv-top20
+            button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click="model()") MODEL
+
+      .row(ng-show="file").mt-30
+        .col-xs-12
+          .divider.divider-circle.divider-center.divider-short
+            // divider
+            i.fa.fa-cog
+
+          h4 Results 
+        .col-xs-6
+          a.btn.btn-m.btn-default.btn-bordered.btn-block(href="{{odes}}" download) Odes
+        .col-xs-6
+          a.btn.btn-m.btn-default.btn-bordered.btn-block(href="{{driver}}" download) Driver
+
+  
+
+
+block footerJS
+  script(src="/js/services/model.js")
+  script(type="text/javascript" src="/js/controllers/modeling/index.js")

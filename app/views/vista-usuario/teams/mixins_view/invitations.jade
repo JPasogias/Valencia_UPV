@@ -1,0 +1,44 @@
+p.lead
+  | Invitaciones
+hr
+.input-group.autosuggest
+  input.form-control.input-lg(
+    name='k', 
+    type='email',
+    placeholder='Dirección de correo'
+    ng-model="invitationEmail"
+  )
+  .input-group-btn
+    button.btn.btn-default.input-lg(type='button' ng-click="sendInvitation()")
+      | Enviar invitación &nbsp
+      i.fa.fa-fw.fa-send-o.fa-lg
+br
+p
+  strong(style="padding-left:15px" ng-show="invalidEmail").text-danger Usuario no encontrado
+
+
+br
+.table-responsive(ng-show="invitations.length > 0")
+  table.table.table-hover.table-vertical-middle.nomargin
+    thead
+      tr
+        th(width="50%") Dirección de correo
+        th(width="30%") Fecha de invitación
+        th(width="20%") 
+    tbody
+      tr(ng-repeat="invitation in invitations")
+        td 
+          | {{invitation.invitation.userEmail}}
+        td {{invitation.creationDate| date:'MM/dd/yyyy'}}
+        td(style="width:100%; text-align:right")
+          button.btn.btn-danger(style="width: 35px; height:20px; padding:0px;padding-left:4px" ng-click="removeInvitation(invitation._id)")
+            i(class="fa fa-close")
+          //- button.btn.btn-success(style="width: 35px; height:20px; padding:0px;padding-left:6px")
+          //-   i(class="fa fa-envelope-o")
+
+
+
+.padding-20
+p.lead
+  | Solicitudes
+hr

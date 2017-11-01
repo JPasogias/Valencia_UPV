@@ -1,0 +1,43 @@
+// PERSONAL INFO TAB
+#info.tab-pane.fade.in.active
+  form
+    .row
+      
+      .col-sm-6
+        .form-group
+          label.form-control-label Name
+          input.form-control(type='text', ng-model="personalInfo.name", placeholder='Name')
+      .col-sm-6
+        .form-group
+          label.form-control-label Surname
+          input.form-control(type='text', ng-model="personalInfo.lastname", placeholder='Surname')
+      .col-sm-6
+        .form-group
+          label.form-control-label E-mail
+          input.form-control(ng-disabled="true" type='text', ng-model="user.email", placeholder='E-mail')
+      .col-sm-6
+        .form-group
+          label.form-control-label Telephone
+          input.form-control(type='text', ng-model="personalInfo.phone", placeholder='Telephone')
+      .col-sm-12
+        .form-group
+          label.form-control-label Interests
+          input.form-control(type='text', ng-model="personalInfo.interests", placeholder='Modeling, biology, crisprs...')
+      .col-sm-12
+        .form-group
+          label.form-control-label Job
+          input.form-control(type='text', ng-model="personalInfo.occupation", placeholder='Upv teacher ...')
+      .col-sm-12
+        .form-group
+          label.form-control-label About me
+          textarea.form-control(rows='3', ng-model="personalInfo.aboutMe", placeholder="I'm....")
+      .col-sm-12
+        .form-group
+          label.form-control-label Website
+          input.form-control(type='text', ng-model="personalInfo.website", placeholder='http://www.upv.es')
+        .margiv-top10
+          button.btn.btn-primary(ng-click='save()')
+            i.fa.fa-check
+            |  Save Changes
+          | &nbsp &nbsp
+          button.btn.btn-default(ng-click='cancel()') Cancel

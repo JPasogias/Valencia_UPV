@@ -1,0 +1,23 @@
+#members.tab-pane.fade.in.active
+  .row
+    .col-xs-12
+      .table-responsive
+        table.table.table-bordered.table-striped
+          thead
+            tr
+              th(style="font-size: 12px") 
+              th(style="font-size: 12px") Username
+              th(style="font-size: 12px") Join Date
+              th(style="font-size: 12px") Last login Date
+              th(style="font-size: 12px") Admin
+          tbody
+            tr(ng-repeat="user in team.members")
+              td(style="font-size: 12px")
+                img(ng-src="{{user.image}}" style="height:30px;")
+              td(style="font-size: 12px") 
+                strong @{{user.username}}
+              td(style="font-size: 12px") {{user.joinDate| date:'MM/dd/yyyy hh:mm'}}
+              td(style="font-size: 12px") {{user.lastLogin| date:'MM/dd/yyyy hh:mm'}}
+              td(style="font-size: 12px")
+                span.label.label-success(ng-show="user.isAdmin") Admin
+                span.label.label-info(ng-show="!user.isAdmin") 

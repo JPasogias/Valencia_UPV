@@ -1,0 +1,44 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="profileController" ng-init="init(#{JSON.stringify(user)})" ng-cloak)
+    #content.padding-20.container
+      // RIGHT
+      .col-sm-9
+        ul.nav.nav-tabs.nav-top-border
+          li
+            a(ng-class="{active:show == 'info'}" ng-click="show = 'info'", data-toggle='tab') Personal Information
+          li
+            a(ng-class="{active:show == 'avatar'}" ng-click="show = 'avatar'", data-toggle='tab') Avatar
+          li
+            a(ng-class="{active:show == 'password'}" ng-click="show = 'password'", data-toggle='tab') Password
+          li
+            a(ng-class="{active:show == 'privacy'}" ng-click="show = 'privacy'", data-toggle='tab') Privacy
+          //- li
+          //-   a(ng-class="{active:show == 'teams'}" ng-click="show = 'teams'", data-toggle='tab') My Teams
+        .tab-content.mt-20
+          div(ng-show="show == 'info'")
+            include ./sections/info.jade
+          div(ng-show="show == 'avatar'")
+            include ./sections/avatar.jade
+          div(ng-show="show == 'password'")
+            include ./sections/password.jade
+          div(ng-show="show == 'privacy'")
+            include ./sections/privacy.jade
+          //- div(ng-show="show == 'teams'")
+          //-   include ./sections/teams.jade
+
+      // LEFT
+      .col-sm-3
+        include ./sections/right-panel
+
+
+
+            
+          
+
+block footerJS
+  script(src='/js/services/user.js')
+  script(src='/js/controllers/profile/index.js')

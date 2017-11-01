@@ -1,0 +1,56 @@
+#newForumCategory.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog.modal-md
+    .modal-content
+      // Modal Header
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title New category
+      // Modal Body
+      .modal-body
+        .row
+          .col-md-12
+            label Title
+            input.form-control.typeahead.tt-input(
+              type="text" 
+              name="src" 
+              placeholder="Name of the category" 
+              autocomplete="off" 
+              spellcheck="false" 
+              dir="auto" 
+              style="position: relative; vertical-align: top; background-color: transparent;"
+              ng-model="category.title"
+              )
+            br
+            label Description
+            .fancy-form
+              // textarea
+              textarea.form-control.word-count(
+                rows='5',
+                data-maxlength='200',
+                data-info='textarea-words-info', 
+                placeholder='Category description...'
+                ng-model="category.description"
+              )
+              span.fancy-hint.size-11.text-muted
+                strong Hint:
+                |  200 words allowed!
+                span.pull-right
+                  span#textarea-words-info 0/200
+                  |  Words
+            br
+            label Type
+            br
+            label.radio
+              input(type='radio', name='radio-btn', value='general', checked='checked'   ng-model="category.type")
+              i
+              | GENERAL FORUM
+            label.radio
+              input(type='radio', name='radio-btn', value='support', checked='checked'  ng-model="category.type")
+              i
+              |  SUPPORT
+
+      // Modal Footer
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+        button.btn.btn-primary(type='button', data-dismiss='modal', ng-click="newCategory()") New category

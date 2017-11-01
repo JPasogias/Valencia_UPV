@@ -1,0 +1,64 @@
+div
+  .side-nav.mb-10
+    .side-nav-head
+      button.fa.fa-bars
+      h4 CATEGORIES
+    ul.list-group.list-group-bordered.list-group-noicon.uppercase
+      li.list-group-item
+        a(ng-click="setGroup('ALL')")
+          span.fs-11.text-muted.float-right
+          |  ALL
+      li.list-group-item
+        a(ng-click="setGroup('Latest on Plant SynBio')")
+          span.fs-11.text-muted.float-right
+          |  Latest on Plant SynBio
+      li.list-group-item
+        a(ng-click="setGroup('The world of Transgenics')")
+          span.fs-11.text-muted.float-right
+          |  The world of Transgenics
+      li.list-group-item
+        a(ng-click="setGroup('Upcoming Talks')")
+          span.fs-11.text-muted.float-right
+          |  Upcoming Talks
+      li.list-group-item
+        a(ng-click="setGroup('Top Experiments')")
+          span.fs-11.text-muted.float-right
+          |  Top Experiments 
+      li.list-group-item
+        a(ng-click="setGroup('Seasonal Contributors')")
+          span.fs-11.text-muted.float-right
+          |  Seasonal Contributors
+      li.list-group-item
+        a(ng-click="setGroup('Plant SynBio Mysteries')")
+          span.fs-11.text-muted.float-right
+          |  Plant SynBio Mysteries 
+      li.list-group-item
+        a(ng-click="setGroup('Challenges')")
+          span.fs-11.text-muted.float-right
+          |  Challenges
+  br
+    
+div(ng-show="user.admin")
+  hr
+  a.btn.btn-reveal.btn-primary(ng-click="getURLLogged('blog/manage-post')" style="width:100%; color: white")
+    i.fa.fa-plus
+    span ADD NEW POST
+  br
+div
+  hr
+  .hidden-xs-down.mt-30.mb-60
+    a.social-icon.social-icon-border.social-facebook.float-left(target="_blank" href='https://www.facebook.com/ValenciaUPViGEM/', data-toggle='tooltip', data-placement='top', title='', data-original-title='Facebook')
+      i.icon-facebook
+      i.icon-facebook
+    a.social-icon.social-icon-border.social-twitter.float-left(target="_blank" href='https://twitter.com/UPVigem', data-toggle='tooltip', data-placement='top', title='', data-original-title='Twitter')
+      i.icon-twitter
+      i.icon-twitter
+    a.social-icon.social-icon-border.social-gplus.float-left(target="_blank" href='https://www.instagram.com/upvigem/', data-toggle='tooltip', data-placement='top', title='', data-original-title='Instagram')
+      i.icon-instagram
+      i.icon-instagram
+    a.social-icon.social-icon-border.social-linkedin.float-left(target="_blank" href='https://www.linkedin.com/company/11242050/', data-toggle='tooltip', data-placement='top', title='', data-original-title='Linkedin')
+      i.icon-linkedin
+      i.icon-linkedin
+  br
+div
+  hr

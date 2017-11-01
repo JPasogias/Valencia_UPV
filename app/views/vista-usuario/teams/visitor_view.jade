@@ -1,0 +1,56 @@
+extends ../layout
+
+block subhead
+  link(href='/css/usuario_basico/search.css', rel='stylesheet', type='text/css')
+  link(href='/css/usuario_basico/teams.css', rel='stylesheet', type='text/css')
+
+block navbar
+  include ../navbar.jade 
+    
+block content
+  section(ng-controller="teamController" ng-init="init(#{JSON.stringify(user)}, #{JSON.stringify(team)})" ng-cloak)
+
+    header#page-header
+      h1 Teams
+      ol.breadcrumb
+        li 
+          a(ng-click="getURLLogged('dashboard')") PlantLabCo Toolbox
+        li 
+          a(ng-click="getURLLogged('teams')") Teams
+        li {{team.name}}
+        li Guest
+    .padding-20
+      .panel.panel-default
+        .panel-body
+          .row
+            .col-sm-9
+              .tab-content
+                div(ng-show="panel == 'dashboard'")
+                  include mixins_view/dashboard0.jade
+            .col-sm-3
+              h4
+                i(class="{{team.insignia}}") &nbsp
+                strong {{team.name}}
+              p
+                em {{team.description}}
+                
+              hr.half-margins
+              div.listTeams
+                h4 
+                  strong Options
+                br
+                ul
+                  li
+                    a(ng-click="panel = 'dashboard';") Dashboard
+
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/crispr-elements.js")
+
+  script(type="text/javascript" src="/js/services/team.js")
+  script(type="text/javascript" src="/js/services/team-invitations.js")
+  script(type="text/javascript" src="/js/services/team-requests.js")
+
+  script(type="text/javascript" src="/js/controllers/usuario_basico/activities.js")
+  script(type="text/javascript" src="/js/controllers/usuario_basico/singleTeam.js")

@@ -1,0 +1,13 @@
+{
+  "activities": "db",
+  "experiments": "db",
+  "forum-categoria": "db",
+  "forum-hilo": "db",
+  "forum-mensaje": "db",
+  "blog": "db",
+  "teams": "db",
+  "teams-invitations": "db",
+  "teams-requests": "db",
+  "token": "db",
+  "user": "db"
+}

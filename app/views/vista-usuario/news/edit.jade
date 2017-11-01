@@ -1,0 +1,115 @@
+extends ../../usuario_basico/layout
+
+block subhead
+  link(href='/css/components/text-editor.css', rel='stylesheet', type='text/css')
+  link(href='/css/usuario_administrador/news.css', rel='stylesheet', type='text/css')
+
+block navbar
+  include ../../usuario_basico/navbar 
+    
+block content
+  section.notebook(ng-controller="newsController" ng-init="init(#{JSON.stringify(post)})" ng-cloak)
+    header#page-header
+      h1 Nueva noticia
+      ol.breadcrumb
+        li Hype-It Toolbox
+        li Blog
+    #content.padding-20.container
+      .row
+        .col-md-8.well
+          #panel-ui-tan-l1.panel.panel-default
+          .panel-heading
+            span.elipsis
+              strong Nueva notica
+            ul.nav.nav-tabs.pull-right
+              li.active
+                a(href='#ttab1_nobg', data-toggle='tab') Simple editor
+              li
+                a(href='#ttab2_nobg', data-toggle='tab') Html editor
+          .panel-body
+            .tab-content.transparent
+              #ttab1_nobg.tab-pane.active
+                  form.ng-pristine.ng-valid
+                    .mydiv.form-group
+                      label.control-label Asunto
+                      input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='msg.header', placeholder='Asunto')
+                    .mydiv.form-group
+                      label.control-label Mensaje
+                      div(text-angular='', ng-model='msg.content', name='demo-editor', ta-text-editor-class='border-around', ta-html-editor-class='border-around' class="htmledit" ta-toolbar="toolbar")
+                  
+                  div(style="padding-top:10px;")
+                    center.margiv-top10
+                      button.btn.btn-primary(ng-click='send()')
+                        i.fa.fa-check
+                        |  Enviar
+
+              #ttab2_nobg.tab-pane
+                form.ng-pristine.ng-valid
+                  .mydiv.form-group
+                    label.control-label Asunto
+                    input.form-control.ng-pristine.ng-untouched.ng-valid.ng-empty(type='text', ng-model='msg.header', placeholder='Asunto')
+                  .mydiv.form-group
+                    label.control-label Mensaje
+                    textarea.form-control(
+                      ng-model='msg.content'
+                      type="text"
+                      style="width: 100% !important; height:360px !important;"
+                      )
+                
+                div(style="padding-top:10px;")
+                  center.margiv-top10
+                    button.btn.btn-primary(ng-click='send()')
+                      i.fa.fa-check
+                      |  Enviar
+
+        .col-md-4
+          .card
+            .panel.panel-default
+              .panel-heading
+                center
+                  span.title.elipsis
+                    strong Opciones 
+              .panel-body
+                .row
+                  .col-xs-12
+                    label.control-label Fecha de publicación:
+                    div.input-group
+                      input.input-l.form-control(
+                        name="date"
+                        ng-model="msg.creationDate"
+                        type='text',
+                        is-open='openDatePicker',
+                        datepicker-options='dateOptions',
+                        close-text='Cerrar'
+                        uib-datepicker-popup="{{format}}"
+                        autocomplete="off"
+                        ng-click='open()'
+                        ng-focus='open()'
+                        )
+                      span.input-group-btn
+                        button.btn.btn-default#dateButton(type='button', ng-click='open()')
+
+
+                br
+                .row
+                  .col-xs-12
+                    label.control-label Categoria :
+                    select.form-control(ng-model="msg.type")
+                      option(value='NEWS') Noticia
+                      option(value='NEWFUNCIONALITY') Nueva funcionalidad
+                      option(value='STATEMENT') Comunicado
+                    i.fancy-arrow
+                br
+                .row
+                  .col-xs-12
+                    label.control-label Publico:
+                  .col-xs-12
+                    label.switch
+                      input(type='checkbox', checked='true', ng-model="msg.public",)
+                      span.switch-label(data-on='SI', data-off='NO')
+
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/news.js")
+  script(type="text/javascript" src="/js/controllers/usuario_administrador/news-edit.js")

@@ -1,0 +1,14 @@
+.modal.fade.deletemodal(tabindex='-1', role='dialog', aria-labelledby='mySmallModalLabel', aria-hidden='true')
+  .modal-dialog.modal-md
+    .modal-content
+      // header modal
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#mySmallModalLabel.modal-title Delete post
+      // body modal
+      .modal-body
+        p.lead ¿Are you sure that you whant to delete this post?
+        p This action can not be undone
+        center
+          button.btn.btn-danger(type='button' ng-click="delete()") DELETE

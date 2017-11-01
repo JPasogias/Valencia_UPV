@@ -1,0 +1,10 @@
+p.lead
+  | Leave Team
+
+hr
+p
+  |  By clicking the button below you stop being part of this team, this means that no longer have access to shared in the group material and if in the future you re-join the group should either receive an invitation or make a access request
+center.padding-20
+  btn.btn.btn-xlg.btn-default.btn-bordered.size-20(type='button' ng-click="leftgroup()")
+    | LEAVE {{team.name.toUpperCase()}}
+    span.block.font-lato This action is not reversible

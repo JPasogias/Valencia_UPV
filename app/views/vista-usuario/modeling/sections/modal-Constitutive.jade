@@ -1,0 +1,54 @@
+#Constitutive.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title Constitutive
+      .modal-body
+        fieldset
+          .row
+            .col-md-12
+              label Protein
+              input.form-control.required(ng-model="item.name" type='text' ng-change="newName()" ng-show="badname == false")
+              input.form-control.required(ng-model="item.name" type='text' ng-change="newName()" ng-show="badname == true" style="background-color: pink")
+          .row
+            .col-md-4
+              label CrnaPOLfree
+              input.form-control.required(ng-model="item.CrnaPOLfree" type='text')
+            .col-md-4
+              label Cn
+              input.form-control.required(ng-model="item.Cn" type='text')
+            .col-md-4
+              label k_b
+              input.form-control.required(ng-model="item.k_b" type='text')
+            .col-md-4
+              label k_u
+              input.form-control.required(ng-model="item.k_u" type='text')
+            .col-md-4
+              label k_m
+              input.form-control.required(ng-model="item.k_m" type='text')
+            .col-md-4
+              label d_m
+              input.form-control.required(ng-model="item.d_m" type='text')
+            .col-md-4
+              label k_
+              input.form-control.required(ng-model="item.k_" type='text')
+          .row
+            .col-md-6
+              label Dependency One
+              select.form-control(ng-disabled="true" style="background-color: #dddddd")
+
+            .col-md-6
+              label Dependency Two
+              select.form-control(ng-disabled="true" style="background-color: #dddddd")
+
+
+                    
+      .modal-footer(style="background-color: #dddddd;")
+        button.btn.btn-3d.btn-gris(type='button' data-dismiss='modal')
+          |  CANCEL
+        button.btn.btn-3d.btn-azul(type='button' ng-click="addElement('Constitutive')" ng-show="!oldname")
+          |  CREATE
+        button.btn.btn-3d.btn-azul(type='button' ng-click="addElement('Constitutive')" ng-show="oldname")
+          |  SAVE

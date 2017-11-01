@@ -1,0 +1,129 @@
+/*LOGIN PANEL*/
+.sky-form.boxed fieldset {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sky-form.boxed label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.sky-form.boxed button {
+  height: 30px;
+  padding-top: 0px;
+  min-width: 150px;
+}
+
+
+/*Navbar*/
+@media (min-width: 992px) {
+  #topNav,
+  #topNav .container,
+  .navbar-toggleable-md {
+    height: 100px;
+  }
+  #header.header-sm #topNav a.logo,
+  #header.header-sm #topNav a.logo>img {
+    height: 100px;
+  }
+  #header.navbar-toggleable-md .navbar-collapse {
+    margin-top: 25px;
+  }
+  .bannerigem{
+    min-height: 560px;
+  }
+}
+
+/*colores*/
+.btn-gris{
+  background-color: #acacac;
+  color: white;
+  font-weight: bold;
+}
+.btn-verde{
+  background-color: #c8d400;
+  color: white;
+  font-weight: bold;
+}
+.btn-azul{
+  background-color: #005e72;
+  color: white;
+  font-weight: bold;
+
+}
+
+/*FIle Upload*/
+.input-group .input-group-addon:not(:last-child) {
+  min-width: 60px;
+}
+
+.input-group .form-control:not(:first-child):not(:last-child) {
+  max-width: 90%;
+}
+
+.input-group .input-group-btn {
+  min-width: 150px;
+}
+
+/*Search*/
+.search {
+  width: 95%;
+  position: relative
+}
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #005e72;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+  margin-bottom: 30px;
+
+}
+.searchTerm:focus{
+  color: #005e72;
+}
+.searchButton {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #005e72;
+  background: #005e72;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.manurow{
+  background-color: #F8F8F8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: -2px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.manuh {
+padding-top: 20px;
+}
+.manuh::after {
+  background: #ddd;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+    top: 0px%;
+  width: 98%;
+}
+
+figure{
+  background-color: white;
+}

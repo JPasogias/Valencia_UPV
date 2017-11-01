@@ -1,0 +1,122 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="experimentController" ng-init="init(#{JSON.stringify(idExperiment)})" ng-cloak)
+    .container
+      .row
+        .col-md-4
+          figure.blog-item-small-image.mb-20
+            .lightbox(data-plugin-options='{"delegate": "a", "gallery": {"enabled": true}}')
+              a.image-hover-plus.image-hover-zoom.image-hover-overlay.mb-60(ng-href='{{experiment.abstractimage}}')
+                img.img-fluid(height="100%" ng-src='{{experiment.abstractimage}}', alt='' )
+                i.icon-hover-plus
+        .col-md-8
+          .row
+            .col-md-12
+              h4(style="margin-bottom:0px; padding-top:0px").manuh
+                strong Name: 
+              h2(style="margin-bottom:10px")
+                | {{experiment.title}}
+            .col-md-8
+              h4(style="margin-bottom:10px")
+                | {{experiment.creationDate | date:'dd/MM/yyyy'}}  - 
+                a(style="color:#c8d400" ng-show="!user" ng-href="/profile/{{experiment.owner}}")
+                  span.font-lato 
+                    strong {{experiment.owner}}
+                a(style="color:#c8d400" ng-show="user" ng-click="getURLLogged('profile/' + experiment.owner)")
+                  span.font-lato 
+                    strong {{experiment.owner}}
+              h4(style="margin-bottom:10px")
+                strong Chassis: 
+                | {{experiment.chassis}}
+              h4(style="margin-bottom:20px")
+                strong Category: 
+                | {{experiment.category}}
+            .col-md-4
+              img(ng-show="experiment.status == 'FAILURE' " height="100px" src='/images/fail.png', alt='' )
+              img(ng-show="experiment.status == 'SUCCESS' " height="100px" src='/images/success.png', alt='' )
+          .row
+            .col-md-12
+              h4(style="margin-bottom:10px; padding-top:0px").manuh
+                strong Key Words:
+              a.tag(href='#')
+                span.txt {{experiment.keyword1}}
+              a.tag(href='#')
+                span.txt {{experiment.keyword2}}
+              a.tag(href='#')
+                span.txt {{experiment.keyword3}}
+              a.tag(href='#')
+                span.txt {{experiment.keyword4}}
+          .row
+            .col-md-12
+              h4(style="margin-bottom:10px; padding-top:0px").manuh
+                strong Team: 
+              h4 {{experiment.team}}
+          .row
+            .col-md-12
+              h4(style="margin-bottom:10px; padding-top:0px").manuh
+                strong Plantlabco - DOI: 
+              h4 {{experiment._id}}
+              
+        .col-md-12
+          h4(style="margin-bottom:10px").manuh
+            strong Abstract
+          p#abstractmsg(style="padding-top:5px;")
+        .col-md-12
+          h4(style="margin-bottom:10px").manuh
+            strong Protocol
+          p#protocolmsg(style="padding-top:5px;")
+        
+        .col-md-12(ng-show="experiment.reactives.length > 0")
+          .table-responsive(style="margin-bottom:10px")
+            table.table.table-bordered.table-striped
+              thead
+                tr
+                  th
+                    h4
+                      strong Reactive
+                  th
+                    h4
+                      strong Concentration
+              tbody    
+                tr(ng-repeat="reactive in experiment.reactives")
+                  td
+                    p {{reactive.name}}
+                  td
+                    p {{reactive.concentration}}
+        .col-md-12
+          h4(style="margin-bottom:10px").manuh
+            strong Equipment
+          p(style="padding-top:5px;" ng-repeat="equip in experiment.equipment")
+            | {{equip.name}}
+        .col-md-12
+          h4(style="margin-bottom:10px").manuh
+            strong Conditions
+          p#conditionsmsg(style="padding-top:5px;")
+        .col-md-6
+          h4(style="margin-bottom:10px").manuh
+            strong Number of plant used
+          p(style="padding-top:5px;") {{experiment.plants}}
+        .col-md-6
+          h4(style="margin-bottom:10px").manuh
+            strong Number of replications
+          p(style="padding-top:5px;") {{experiment.replications}}
+        .col-md-12
+          h4(style="margin-bottom:10px").manuh
+            strong Results
+          p#resultsmsg(style="padding-top:5px;")
+        .col-md-12
+          h4(style="margin-bottom:10px").manuh
+            strong Bibliography
+          p#bibliographymsg(style="padding-top:5px;")
+      .row
+        .col-xs-12
+          center.margiv-top20
+            button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click='showforo()') SHOW IN FORO
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/experiments.js")
+  script(type="text/javascript" src="/js/controllers/experiments/show-experiment.js")

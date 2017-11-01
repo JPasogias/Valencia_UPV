@@ -1,0 +1,94 @@
+#IndTwoO.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog.modal-lg(max-width="900px")
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title Inducible Two Operators Two Factors
+      .modal-body
+        fieldset
+          .row
+            .col-md-12
+              label Name
+              input.form-control.required(ng-model="item.name" type='text' ng-change="newName()" ng-show="badname == false")
+              input.form-control.required(ng-model="item.name" type='text' ng-change="newName()" ng-show="badname == true" style="background-color: pink")
+          .row
+            .col-md-4
+              label CrnaPOLfree
+              input.form-control.required(ng-model="item.CrnaPOLfree" type='text')
+            .col-md-4
+              label Cn
+              input.form-control.required(ng-model="item.Cn" type='text')
+            .col-md-4
+              label k_bF1
+              input.form-control.required(ng-model="item.k_bF1" type='text')
+            .col-md-4
+              label k_uF1
+              input.form-control.required(ng-model="item.k_uF1" type='text')
+            .col-md-4
+              label k_bF2
+              input.form-control.required(ng-model="item.k_bF2" type='text')
+            .col-md-4
+              label k_uF2
+              input.form-control.required(ng-model="item.k_uF2" type='text')
+            .col-md-4
+              label k_bF1_F2op
+              input.form-control.required(ng-model="item.k_bF1_F2op" type='text')
+            .col-md-4
+              label k_uF1_F2op
+              input.form-control.required(ng-model="item.k_uF1_F2op" type='text')
+            .col-md-4
+              label k_bF2_F1op
+              input.form-control.required(ng-model="item.k_bF2_F1op" type='text')
+            .col-md-4
+              label k_uF2_F1op
+              input.form-control.required(ng-model="item.k_uF2_F1op" type='text')
+            .col-md-4
+              label k_bY_
+              input.form-control.required(ng-model="item.k_bY_" type='text')
+            .col-md-4
+              label k_uY_
+              input.form-control.required(ng-model="item.k_uY_" type='text')
+            .col-md-4
+              label k_bY_F1op
+              input.form-control.required(ng-model="item.k_bY_F1op" type='text')
+            .col-md-4
+              label k_uY_F1op
+              input.form-control.required(ng-model="item.k_uY_F1op" type='text')
+            .col-md-4
+              label k_bY_F2op
+              input.form-control.required(ng-model="item.k_bY_F2op" type='text')
+            .col-md-4
+              label k_uY_F2op
+              input.form-control.required(ng-model="item.k_uY_F2op" type='text')
+            .col-md-4
+              label k_bY_F12op
+              input.form-control.required(ng-model="item.k_bY_F12op" type='text')
+            .col-md-4
+              label k_uY_F12op
+              input.form-control.required(ng-model="item.k_uY_F12op" type='text')
+            .col-md-4
+              label k_m
+              input.form-control.required(ng-model="item.k_m" type='text')
+            .col-md-4
+              label d_m
+              input.form-control.required(ng-model="item.d_m" type='text')
+            .col-md-4
+              label k_
+              input.form-control.required(ng-model="item.k_" type='text')
+          .row
+            .col-md-6
+              label Dependency One
+              select.form-control(ng-options="o as o for o in itemsCombo" ng-model="item.dependency1")
+            .col-md-6
+              label Dependency Two
+              select.form-control(ng-options="o as o for o in itemsCombo" ng-model="item.dependency2")
+
+                    
+      .modal-footer(style="background-color: #dddddd;")
+        button.btn.btn-3d.btn-gris(type='button' data-dismiss='modal')
+          |  CANCEL
+        button.btn.btn-3d.btn-azul(type='button' ng-click="addElement('IndTwoO')" ng-show="!oldname")
+          |  CREATE
+        button.btn.btn-3d.btn-azul(type='button' ng-click="addElement('IndTwoO')" ng-show="oldname")
+          |  SAVE

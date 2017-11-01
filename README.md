@@ -11,6 +11,7 @@ registered information and allowing data mining.
 The software was developed using MEAN full-stack JavaScript.
 
 
+
 -----------------------------------------------------------------------------------------
 
 Copyright 2017 Juan Pasogias Guallart

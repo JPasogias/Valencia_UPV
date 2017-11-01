@@ -1,0 +1,62 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="forumController" ng-init="initTopic(#{JSON.stringify(idCategory)})" ng-cloak)
+    include sections/newHilo-modal.jade 
+    .container
+      .row
+        .col-md-12
+          // FORUM 1
+          table.table.table-vertical-middle.mb-60
+            thead
+              tr.fs-15
+                th.fw-400 TOPIC
+                th.text-center.hidden-xs-down.fw-100.fw-300 VOICES
+                th.text-center.hidden-xs-down.fw-100.fw-300 POSTS
+                th.text-center.hidden-xs-down.fw-200.fw-300 FRESHNESS
+            tbody
+              
+              tr(ng-repeat="topic in topics")
+                td
+                  h4.m-0.fs-16
+                    a(href='{{topic.idCategoria}}/topic/{{topic._id}}')
+                      | {{topic.title}}
+                    ul.list-inline.categories.m-0.text-muted.fs-11.hidden-xs-down
+                      li
+                        | Created by 
+                        a(href='/users/{{user._id}}/profile/{{topic.creatorName}}') {{topic.creatorName}}
+                      li(ng-show="topic.creatorName == user.username")
+                        a.text-danger(ng-click="deletePost(topic._id)") delete
+                      li(ng-show="topic.creatorName == user.username")
+                        a.text-success(href='#') edit
+                td.text-center.hidden-xs-down
+                  a(href='#') {{topic.numVoices}}
+                td.text-center.hidden-xs-down
+                  a(href='#') {{topic.numMensajes}}
+                td.text-center.hidden-xs-center
+                  div(ng-show="topic.lastPost != '' ")
+                    small.block.fs-11.text-muted {{topic.lastPost.creationDate | date:'dd/MM/yyyy hh:mm'}}
+                    a.fs-13(href='/users/{{user._id}}/profile/{{topic.lastPost.username}}') by {{topic.lastPost.username}}
+                  div(ng-show="topic.lastPost == '' ")
+                    small.block.fs-11.text-muted Unknow
+                    a.fs-13(href='#') Be the first
+
+
+          .divider.m-0
+          .clearfix.mb-60
+            span.float-right.fs-11.hidden-xs-down
+              | Viewing {{topics.length}} topics 
+            a.btn.btn-3d.btn-sm.btn-reveal.btn-teal(type='button' data-toggle='modal', data-target='#newForumCategory')
+              i.fa.fa-pencil-square-o
+              span CREATE NEW TOPIC
+
+
+
+        
+block footerJS
+  script(type="text/javascript" src="/js/controllers/usuario_basico/forum/categories.js")
+  script(type="text/javascript" src="/js/services/forum-categoria.js")
+  script(type="text/javascript" src="/js/services/forum-hilo.js")
+  script(type="text/javascript" src="/js/services/forum-mensaje.js")

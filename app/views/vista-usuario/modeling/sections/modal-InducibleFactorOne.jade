@@ -1,0 +1,64 @@
+#IndOneOOneF.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title Inducible One Operator One Factor
+      .modal-body
+        fieldset
+          .row
+            .col-md-12
+              label Protein
+              input.form-control.required(ng-model="item.name" type='text' ng-change="newName()" ng-show="badname == false")
+              input.form-control.required(ng-model="item.name" type='text' ng-change="newName()" ng-show="badname == true" style="background-color: pink")
+          .row
+            .col-md-4
+              label CrnaPOLfree
+              input.form-control.required(ng-model="item.CrnaPOLfree" type='text')
+            .col-md-4
+              label Cn
+              input.form-control.required(ng-model="item.Cn" type='text')
+            .col-md-4
+              label k_b
+              input.form-control.required(ng-model="item.k_b" type='text')
+            .col-md-4
+              label k_u
+              input.form-control.required(ng-model="item.k_u" type='text')
+            .col-md-4
+              label k_bRNAComplex
+              input.form-control.required(ng-model="item.k_bRNAComplex" type='text')
+            .col-md-4
+              label k_uRNAComplex
+              input.form-control.required(ng-model="item.k_uRNAComplex" type='text')
+            .col-md-4
+              label  k_bRNA
+              input.form-control.required(ng-model="item. k_bRNA" type='text')
+            .col-md-4
+              label k_uRNA
+              input.form-control.required(ng-model="item.k_uRNA" type='text')
+            .col-md-4
+              label k_m
+              input.form-control.required(ng-model="item.k_m" type='text')
+            .col-md-4
+              label d_m
+              input.form-control.required(ng-model="item.d_m" type='text')
+            .col-md-4
+              label k_
+              input.form-control.required(ng-model="item.k_" type='text')
+          .row
+            .col-md-6
+              label Dependency One
+              select.form-control(ng-options="o as o for o in itemsCombo" ng-model="item.dependency1")
+            .col-md-6
+              label Dependency Two
+              select.form-control(ng-disabled="true" style="background-color: #dddddd")
+
+                    
+      .modal-footer(style="background-color: #dddddd;")
+        button.btn.btn-3d.btn-gris(type='button' data-dismiss='modal')
+          |  CANCEL
+        button.btn.btn-3d.btn-azul(type='button' ng-click="addElement('IndOneOOneF')" ng-show="!oldname")
+          |  CREATE
+        button.btn.btn-3d.btn-azul(type='button' ng-click="addElement('IndOneOOneF')" ng-show="oldname")
+          |  SAVE

@@ -1,0 +1,48 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="blogController" ng-init="init(#{JSON.stringify(idPost)})")
+    .container
+      .row
+        // LEFT
+        .col-md-2.col-sm-2
+        .col-md-8.col-sm-8
+          h1.blog-post-title {{post.header}}
+          ul.blog-post-info.list-inline
+            li
+              i.fa.fa-clock-o
+              span.font-lato {{post.publishdate | date:'dd/MM/yyyy'}} 
+            //- li
+              //- a(href='#')
+              //-   i.fa.fa-comment-o
+              //-   span.font-lato 28 Comments
+            li
+              i.fa.fa-folder-open-o
+              span.font-lato {{post.category}}
+            li
+              a(ng-show="!user" ng-href="/profile/{{post.owner}}")
+                i.fa.fa-user
+                span.font-lato 
+                  strong {{post.owner}}
+              a(ng-show="user" ng-click="getURLLogged('profile/' + post.owner)")
+                i.fa.fa-user
+                span.font-lato 
+                  strong {{post.owner}}
+          figure.mb-20
+            center
+              img(ng-src='{{post.image}}', alt='img' style="max-height: 250px;")
+
+
+          p#contentmsg.dropcap 
+            
+          .divider.divider-dotted
+
+          
+
+
+
+block footerJS
+  script(type="text/javascript" src="/js/services/blog.js")
+  script(type="text/javascript" src="/js/controllers/blog/show-post.js")

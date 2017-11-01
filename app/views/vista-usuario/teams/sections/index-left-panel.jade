@@ -1,0 +1,44 @@
+div(ng-show="myTeams.length")
+  h4 My teams
+  .table-responsive
+    table.table.table-hover.table-vertical-middle.nomargin
+      thead
+        tr
+          th(width="5%") 
+          th(width="40%") Name
+          th(width="30%") Creation Date
+          th(width="10%") Type
+      tbody
+        tr(ng-repeat="team in myTeams")
+          td
+            i(class="{{team.insignia}}")
+          td 
+            a(ng-click="openGroupWeb(team._id)")
+              | {{team.name}}
+          td {{team.creationDate| date:'MM/dd/yyyy'}}
+          td
+            span.label.label-success(ng-show="team.isPublic") Public 
+            span.label.label-info(ng-show="!team.isPublic") Private 
+br
+br
+div(ng-show="myTeamsSearch.length")
+  h4 Search results
+  .table-responsive
+    table.table.table-hover.table-vertical-middle.nomargin
+      thead
+        tr
+          th(width="5%") 
+          th(width="40%") Name
+          th(width="30%") Creation Date
+          th(width="10%") Type
+      tbody
+        tr(ng-repeat="team in myTeamsSearch")
+          td
+            i(class="{{team.insignia}}")
+          td 
+            a(ng-click="openGroupWeb(team._id)")
+              | {{team.name}}
+          td {{team.creationDate| date:'MM/dd/yyyy'}}
+          td
+            span.label.label-success(ng-show="team.isPublic") Public 
+            span.label.label-info(ng-show="!team.isPublic") Private 

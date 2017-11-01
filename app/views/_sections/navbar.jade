@@ -1,0 +1,57 @@
+nav.nav-main
+  ul#topMain.nav.nav-pills.nav-main.nav-animate-fadeIn
+    li(ng-show="isTeamAdmin")
+      a(ng-click="getURLLogged('manage-team')")
+        | Manage team
+    li
+      a(ng-click="getURLLogged('blog')")
+        | Magazine
+    li
+      a(ng-click="getURLLogged('talks')")
+        | Talks
+    li
+      a(ng-click="getURLLogged('foro')")
+        | Forum
+    li
+      a(ng-click="getURLLogged('experiments')")
+        | Experiments
+    li
+      a(ng-click="getURLLogged('modeling')")
+        | Modeling
+    li.dropdown
+      a.dropdown-toggle(href='#')
+        | About us
+      ul.dropdown-menu.has-topBar
+        li
+          a(ng-click="getURLLogged('about-us')")
+            | About us
+        li
+          a(ng-click="getURLLogged('chatter-plant')")
+            | Chatter plant
+        li
+          a(ng-click="getURLLogged('valencia-upv-igem')")
+            | Valencia UPV iGEM
+    li
+      a(ng-click="getURLLogged('faq')")
+        | FAQ
+    li.active(ng-show="!user")
+      a(ng-click="getURLLogged('')")
+        i.fa.fa-lock(aria-hidden='true' style="font-size: 18px;color:#c8d400") &nbsp;&nbsp;
+        strong Sign in
+    li.dropdown.active(ng-show="user")
+      a.dropdown-toggle(href='#')
+        i.fa.fa-unlock(aria-hidden='true' style="font-size: 18px;color:#c8d400") &nbsp;&nbsp;
+        strong @{{user.username}}
+      ul.dropdown-menu.has-topBar
+        li
+          a(ng-click="getURLLogged('')")
+            | Dashboard
+        li
+          a(ng-click="getURLLogged('manage-profile')")
+            | Profile
+        li
+          a(ng-click="getURLLogged('manage-users')" ng-show="user.admin")
+            | Mange users
+        li
+          a(href='/log-out')
+            | Log out

@@ -1,0 +1,86 @@
+p.lead
+  | Dashboard
+hr
+p
+  | These are the targets registered for this team : 
+.row
+  .col-xs-12
+    .card
+      .panel.panel-default
+        .searchResults
+          table.table.table-condensed(data-role="table" id="movie-table-custom" data-mode="reflow" class="movie-list table-stroke")
+            thead
+              tr.hidden-xs
+                th(data-priority="1" width="50px;")
+                th.text-left(data-priority="2") Plant
+                th.text-left(data-priority="3") Species
+                th.text-left(data-priority="4") Phenotypic characteristic
+                th.text-left(data-priority="5") Reviewed
+            tbody(ng-repeat="aRow in crisprs")
+              tr(ng-click="aRow.openRow = !aRow.openRow")
+                td
+                  button.btn.btn-default.btn-xs(ng-show="aRow.openRow == true")
+                    i.fa.fa-expand(aria-hidden='true')
+                  button.btn.btn-default.btn-xs(ng-show="aRow.openRow == false")
+                    i.fa.fa-compress(aria-hidden='true')
+                td.text-left(class="title")
+                  | &nbsp; {{ aRow.commonName }}
+                td.text-left 
+                  | {{ aRow.species }} 
+                td.text-left 
+                  | {{ aRow.phenotypicTrait }} 
+                td.text-left 
+                  | {{ aRow.revised}}
+              tr.dropableTable(ng-show="aRow.openRow == true")
+                td.hidden-xs
+                td(colspan='4')
+                  .hidden-xs.hidden-sm
+                    div(style="padding:15px; display: inline-block; vertical-align: top; width: 70%" )
+                      .mydiv
+                        p
+                          strong Gene
+                        p(style="font-weight: normal") {{ aRow.geneName }}
+                      .mydiv
+                        p
+                          strong Gene sequence
+                        p(style="font-family:'Lucida Console', Monaco, monospace; max-width: 600px;") {{ aRow.geneSequence }} 
+                        
+                    div(style="padding:15px; display: inline-block; vertical-align: top; width: 30%" )
+                      .mydiv
+                        p
+                          strong NCBI CDS Accession Number
+                        p(style="font-weight: normal") {{ aRow.ncbiCdsAccessionNumber }} 
+                      .mydiv
+                        p
+                          strong Protein
+                        p(style="font-weight: normal") {{ aRow.protein }} 
+                      .mydiv
+                        p
+                          strong Bibliography
+                        p(style="font-weight: normal") {{ aRow.bibliography }} 
+                      .mydiv
+                        p
+                          strong DOI
+                        a(style="font-weight: normal;     text-decoration: underline; color: #59BA41;" target="_blanc" href="https://www.google.com/search?q={{aRow.doi}}") {{ aRow.doi }} 
+                  .visible-xs.visible-sm
+                    div(style="padding:15px; width: 100%" )
+                      .mydiv
+                        p
+                          strong Gene
+                        p(style="font-weight: normal") {{ aRow.geneName }}
+                      .mydiv
+                        p
+                          strong NCBI CDS Accession Number
+                        p(style="font-weight: normal") {{ aRow.ncbiCdsAccessionNumber }} 
+                      .mydiv
+                        p
+                          strong Protein
+                        p(style="font-weight: normal") {{ aRow.protein }} 
+                      .mydiv
+                        p
+                          strong Bibliography
+                        p(style="font-weight: normal") {{ aRow.bibliography }} 
+                      .mydiv
+                        p
+                          strong DOI
+                        a(style="font-weight: normal;     text-decoration: underline; color: #59BA41;" target="_blanc" href="https://www.google.com/search?q={{aRow.doi}}") {{ aRow.doi }} 

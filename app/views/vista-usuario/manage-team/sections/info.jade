@@ -1,0 +1,19 @@
+// PERSONAL INFO TAB
+#info.tab-pane.fade.in.active
+  fieldset
+    .row
+      .col-md-12
+        label Name *
+        input.form-control.required(ng-model="team.name" type='text')
+    .row
+      .col-md-12
+        label Description *
+        textarea.form-control.required(ng-model="team.description" rows='4')
+  .mt-5
+    hr
+    center.mt-10
+      button.btn.btn-3d.btn-azul(type='button' ng-click="cancel()")
+        |  CANCEL
+      &nbsp;&nbsp;
+      button.btn.btn-3d.btn-gris(type='button' ng-click='save()')
+        |  SAVE CHANGES

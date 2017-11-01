@@ -1,0 +1,58 @@
+.panel.panel-default
+  .panel-heading
+    span.elipsis
+      strong Search team
+  .panel-body
+    .fancy-form
+      i.fa.fa-search-minus
+      input.form-control.typeahead.tt-input(
+        type="text" 
+        name="src" 
+        placeholder="Team name" 
+        autocomplete="off" 
+        spellcheck="false" 
+        dir="auto" 
+        style="position: relative; vertical-align: top; background-color: transparent;"
+        ng-model="valuesearch"
+      )
+    btn.btn.btn-3d.btn-black.full-width(ng-click="search()")
+      | Search
+.panel.panel-default(ng-init="getInvitations()")
+  .panel-heading
+    span.elipsis
+      strong Received invitations
+  .panel-body
+    p(ng-show="invitations.length == 0")
+      | You don’t have any invitations
+    .table-responsive(ng-show="invitations.length > 0")
+      table.table.table-hover.table-vertical-middle.nomargin
+        thead
+          tr
+            th(width="40%") Team
+            th(width="30%") Date invitation
+            th(width="30%") 
+        tbody
+          tr(ng-repeat="invitation in invitations")
+            td 
+              a(ng-click="openGroupWeb(invitation.idTeam)")
+                | {{invitation.team}}
+            td {{invitation.creationDate| date:'MM/dd/yyyy'}}
+            td(style="width:100%; text-align:right")
+              button.btn.btn-success(style="width: 35px; height:20px; padding:0px;padding-left:6px" ng-click="acceptInvitation(invitation._id)")
+                i(class="fa fa-check")
+              button.btn.btn-danger(style="width: 35px; height:20px; padding:0px;padding-left:4px" ng-click="removeInvitation(invitation._id)")
+                i(class="fa fa-close")
+            
+.panel.panel-default
+  .panel-heading
+    span.elipsis
+      strong Create a team
+  .panel-body
+    .alert.alert-bordered-dotted.margin-bottom-30
+      h4
+        strong Create your own team and invite your friends(to join in)
+      p
+        | To obtain a better and complete user experience, HypeIt gives you/offers a utilitily/tool to share results with…
+      center.padding-20
+        a.btn.btn-3d.btn-xlg.btn-black(type='button', data-toggle='modal', data-target='#newTeam')
+          | CREATE YOUR OWN TEAM

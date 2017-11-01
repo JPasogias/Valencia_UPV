@@ -1,0 +1,49 @@
+extends ../../layout
+
+block subhead
+
+block content
+  section(ng-controller="forumController" ng-init="initPost(#{JSON.stringify(idCategory)}, #{JSON.stringify(idTopic)})" ng-cloak)
+    include sections/newHilo-modal.jade 
+    .container
+      .row
+        .col-md-12
+          
+            // post
+            .clearfix.mb-60(ng-repeat="post in posts")
+              .border-bottom-1.border-top-1.p-10
+                span.float-right.fs-11.mt-3.text-muted {{post.creationDate | date:'MM/dd/yyyy hh:mm'}}
+                strong {{post.userdata.name}}
+              .block-review-content
+                .block-review-body
+                  .block-review-avatar.text-center
+                    .push-bit
+                      a(href='#')
+                        img(src='{{post.userdata.image}}', width='100', alt='avatar')
+                    small.block(ng-show='post.userdata.isAdmin') admin
+                    small.block(ng-show='!post.userdata.isAdmin') user
+                    hr
+                  p(bind-html-unsafe="post.content")
+            // /post
+            .clearfix.mb-60
+              .border-bottom-1.border-top-1.p-10
+                span.float-right.fs-11.mt-3.text-muted today
+                strong LEAVE A REPLY
+              br
+              textarea#summernote.summernote.form-control(ng-model="postcontent" data-height='200', data-lang='en-US')
+              
+              center.margiv-top20
+                button.btn.btn-m.btn-default.btn-bordered.btn-block.mt-30(ng-click='sendPost()') SUBMIT POST
+
+                
+                  
+
+          
+
+
+        
+block footerJS
+  script(type="text/javascript" src="/js/controllers/usuario_basico/forum/categories.js")
+  script(type="text/javascript" src="/js/services/forum-categoria.js")
+  script(type="text/javascript" src="/js/services/forum-hilo.js")
+  script(type="text/javascript" src="/js/services/forum-mensaje.js")
