@@ -8,6 +8,7 @@ the mathematical models’ generation of genetic circuits. All guided by a
 developed metadata’s standard accepted and reviewed by professors and researchers, unifying 
 registered information and allowing data mining. 
 
+The software was developed using MEAN full-stack JavaScript.
 
 
 -----------------------------------------------------------------------------------------
