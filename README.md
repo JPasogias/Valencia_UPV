@@ -2,10 +2,10 @@
 Repository for Valencia_UPV team code for the 2017 igem competition
 
 PlantLabCo raises to todays Plant SynBio researchers problems. This multifunctional
-website contains a repository that unifies all experimentsâ€™ results increasing current
+website contains a repository that unifies all experiments' results increasing current
 scientific work. Furthermore, software modeling tool is integrated to ease
-the mathematical modelsâ€™ generation of genetic circuits. All guided by a
-developed metadataâ€™s standard accepted and reviewed by professors and researchers, unifying
+the mathematical models' generation of genetic circuits. All guided by a
+developed metadata's standard accepted and reviewed by professors and researchers, unifying
 registered information and allowing data mining.
 
 #Demo
